@@ -1,4 +1,4 @@
-# <Proyecto Coder React>
+# Proyecto Coder React
 
 ## Table of Contents 🚀
 
