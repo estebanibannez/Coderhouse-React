@@ -7,11 +7,11 @@ Contenido.
 - [Installation](#installation)
 - [Usage](#usage)
 
-## Installation
+## Installation ⚙️
 
 yarn
 
-## Run
+## Despliegue 📦
 
 yarn dev
 
