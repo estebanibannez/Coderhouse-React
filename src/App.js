@@ -1,10 +1,15 @@
-import Etiqueta from "./Etiqueta";
+import Layout from "./components/Layout";
+import NavBar from "./components/Navbar";
+import Card from "./components/Card";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Etiqueta />
+      <NavBar />
+      <Layout>
+        <Card />
+      </Layout>
     </div>
   );
 }
