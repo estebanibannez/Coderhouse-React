@@ -4,11 +4,11 @@ import { Badge, Text, Box, Flex } from "@chakra-ui/react";
 const CardWidget = ({ cartAmount }) => {
   return (
     <>
-      <Flex>
+      <Flex mr="10">
         <BsCart3 size={40} />
-        <Box ml="3">
+        <Box>
           <Text fontWeight="bold">
-            <Badge ml="1" colorScheme="green">
+            <Badge ml="1" fontSize="1.3em" colorScheme="twitter" m={2}>
               {cartAmount}
             </Badge>
           </Text>
