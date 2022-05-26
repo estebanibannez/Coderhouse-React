@@ -21,6 +21,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
+import CardWidget from "../CardWidget/CardWidget";
 
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -72,7 +73,8 @@ export default function NavBar() {
           direction={"row"}
           spacing={6}
         >
-          <Button
+          <CardWidget cartAmount={4} />
+          {/* <Button
             as={"a"}
             fontSize={"sm"}
             fontWeight={400}
@@ -93,7 +95,7 @@ export default function NavBar() {
             }}
           >
             Registrarse
-          </Button>
+          </Button> */}
         </Stack>
       </Flex>
 

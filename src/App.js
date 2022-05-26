@@ -1,6 +1,6 @@
-import Layout from "./components/Layout";
-import NavBar from "./components/Navbar";
-import Card from "./components/Card";
+import Layout from "./components/Layout/Layout";
+import NavBar from "./components/Navbar/Navbar";
+import List from "./components/List/List";
 import "./App.css";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <NavBar />
       <Layout>
-        <Card />
+        <List />
       </Layout>
     </div>
   );
