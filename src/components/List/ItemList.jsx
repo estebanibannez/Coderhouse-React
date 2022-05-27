@@ -1,6 +1,6 @@
 import { Box, Heading, Text, Stack, Image } from "@chakra-ui/react";
-const ListItem = ({ listProducts }) => {
-  return listProducts.map((item) => (
+const ItemList = ({ greetings }) => {
+  return greetings.map((item) => (
     <Box
       role={"group"}
       p={10}
@@ -69,4 +69,4 @@ const ListItem = ({ listProducts }) => {
   ));
 };
 
-export default ListItem;
+export default ItemList;

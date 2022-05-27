@@ -1,5 +1,5 @@
 import { Center } from "@chakra-ui/react";
-import ListItem from "./ListItem";
+import ItemList from "./ItemList";
 const listProducts = [
   {
     name: "item 1",
@@ -31,10 +31,10 @@ const listProducts = [
   },
 ];
 
-export default function List() {
+export default function ItemListContainer() {
   return (
     <Center py={12}>
-      <ListItem listProducts={listProducts}></ListItem>
+      <ItemList listProducts={listProducts}></ItemList>
     </Center>
   );
 }
