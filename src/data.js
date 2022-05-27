@@ -34,7 +34,7 @@ export const data = [
   {
     id: 5,
     title: 'Patiburon Asesino',
-    description: 'Figura coleccionable',
+    description: 'Figura coleccionable tiburon',
     previusPrice: 200,
     price: 100,
     image:
