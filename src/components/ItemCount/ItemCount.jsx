@@ -1,6 +1,6 @@
 import {
-  Stack,
   HStack,
+  Stack,
   Button,
   Input,
   Alert,
@@ -9,7 +9,8 @@ import {
   AlertDescription,
 } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
-function ItemCount({ stock, initial, onAdd }) {
+
+const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
   const [isStock, setStock] = useState(false);
 
@@ -89,6 +90,6 @@ function ItemCount({ stock, initial, onAdd }) {
       )}
     </>
   );
-}
+};
 
 export default ItemCount;
