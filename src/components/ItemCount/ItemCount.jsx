@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react';
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
-  const [isStock, setStock] = useState(false);
+  const [isntStock, setntStock] = useState(false);
 
   useEffect(() => {
     debugger;
@@ -41,10 +41,10 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     debugger;
 
     if (count > stock) {
-      setStock(true);
+      setntStock(true);
       return false;
     } else {
-      setStock(false);
+      setntStock(false);
       return true;
     }
   };
@@ -68,7 +68,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         </Button>
       </HStack>
 
-      {isStock && (
+      {isntStock && (
         <Stack spacing={3}>
           <Alert
             status="error"
