@@ -1,14 +1,26 @@
 import { SimpleGrid } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import ItemList from './ItemList';
-import { data } from '../../data';
+import { getProducts } from '../../data';
 
 export default function ItemListContainer() {
+  const [useData, setData] = useState([]);
+  const onAdd = () => {
+    console.log('padre');
+  };
+
+  useEffect(() => {
+    getProducts.then((response) => {
+      debugger;
+      console.log('Listado de productos ', response);
+      setData(response);
+    });
+  }, [useData]);
+
   return (
     <>
       <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={1}>
-        {data.map((product, i) => (
-          <ItemList greetings={product} key={product.id} />
-        ))}
+        <ItemList items={useData} onAdd={onAdd} />
       </SimpleGrid>
     </>
   );

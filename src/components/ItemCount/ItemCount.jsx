@@ -68,7 +68,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         </Button>
       </HStack>
 
-      {isStock ? (
+      {isStock && (
         <Stack spacing={3}>
           <Alert
             status="error"
@@ -85,8 +85,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
             <AlertDescription>Intente con una menor cantidad.</AlertDescription>
           </Alert>
         </Stack>
-      ) : (
-        ''
       )}
     </>
   );
