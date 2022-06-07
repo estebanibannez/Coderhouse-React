@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react';
 import ItemCount from '../ItemCount/ItemCount';
 const Item = ({ item, onAdd }) => {
-  debugger;
   const { title, price, previusPrice, description, pictureUrl } = item;
   return (
     <Box

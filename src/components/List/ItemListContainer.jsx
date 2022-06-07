@@ -11,7 +11,6 @@ export default function ItemListContainer() {
 
   useEffect(() => {
     getProducts.then((response) => {
-      debugger;
       console.log('Listado de productos ', response);
       setData(response);
     });

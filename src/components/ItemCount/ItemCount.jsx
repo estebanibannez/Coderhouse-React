@@ -15,7 +15,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   const [isntStock, setntStock] = useState(false);
 
   useEffect(() => {
-    debugger;
     evaluateStock();
   }, [count]);
 
@@ -38,8 +37,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   };
 
   const evaluateStock = () => {
-    debugger;
-
     if (count > stock) {
       setntStock(true);
       return false;

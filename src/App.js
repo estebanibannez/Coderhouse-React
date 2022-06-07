@@ -1,6 +1,7 @@
 import Layout from './components/Layout/Layout';
 import NavBar from './components/Navbar/Navbar';
 import ItemListContainer from './components/List/ItemListContainer';
+import ItemDetailContainer from './components/List/ItemDetailContainer';
 
 function App() {
   return (
@@ -9,6 +10,8 @@ function App() {
       <Layout>
         <ItemListContainer />
       </Layout>
+
+      <ItemDetailContainer />
     </>
   );
 }
