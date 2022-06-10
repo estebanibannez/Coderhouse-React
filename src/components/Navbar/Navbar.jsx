@@ -23,14 +23,13 @@ export default function NavBar() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
+        bgGradient="linear(to-l,#28313B,#28313B)"
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}
       >
         <Flex
@@ -46,15 +45,14 @@ export default function NavBar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Image width={35} height={10} src="logo2.png" alt="DonPato2" />
-          <Image width={70} height={8} src="logo.png" alt="DonPato" />
-          {/* <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}
-          >
-            Don Pato!
-          </Text> */}
+          <Link to="/" href={'/'}>
+            <Image
+              width={140}
+              height={16}
+              src={window.location.origin + '/logo.png'}
+              alt="DonPato"
+            />
+          </Link>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -96,12 +94,12 @@ export default function NavBar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('gray.600', 'gray.200');
-  const linkHoverColor = useColorModeValue('gray.800', 'white');
+  const linkColor = useColorModeValue('gray.300', 'gray.200');
+  const linkHoverColor = useColorModeValue('pink.500', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={'row'} spacing={2}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -126,7 +124,7 @@ const DesktopNav = () => {
                 border={0}
                 boxShadow={'xl'}
                 bg={popoverContentBgColor}
-                p={4}
+                p={2}
                 rounded={'xl'}
                 minW={'sm'}
               >
@@ -240,30 +238,34 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: 'Productos',
-    children: [
-      {
-        label: 'Listado de productos',
-        subLabel: '',
-        href: '#',
-      },
-    ],
+    href: '/productos',
   },
   {
-    label: 'Top Ventas',
+    label: 'Categorias',
     children: [
       {
-        label: 'Productos destacados',
+        label: 'Superheroes',
         subLabel: '',
-        href: '#',
+        href: '/categoria/heroes',
+      },
+      {
+        label: 'Villanos',
+        subLabel: '',
+        href: '/categoria/villanos',
+      },
+      {
+        label: 'Otros',
+        subLabel: '',
+        href: '/categoria/otros',
       },
     ],
   },
   {
     label: 'Nosotros',
-    href: '#',
+    href: '/nosotros',
   },
   {
     label: 'Contacto',
-    href: '#',
+    href: '/contacto',
   },
 ];

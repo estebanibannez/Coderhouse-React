@@ -1,57 +1,76 @@
-import React from 'react';
-import {
-  Box,
-  Heading,
-  Text,
-  Stack,
-  Image,
-  useColorModeValue,
-  HStack,
-  Button,
-} from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Flex, Box, Image, Badge, useColorModeValue, Text, chakra, Icon } from '@chakra-ui/react';
+import { BsFillArrowDownRightSquareFill } from 'react-icons/bs';
+
 import ItemCount from '../ItemCount/ItemCount';
 const Item = ({ item, onAdd }) => {
-  const { title, price, previusPrice, description, pictureUrl } = item;
+  const { id, stock, title, price, previusPrice, description, pictureUrl } = item;
+
   return (
-    <Box
-      p={2}
-      mt={5}
-      ml={10}
-      mr={10}
-      rounded={'lg'}
-      pos={'relative'}
-      zIndex={1}
-      borderWidth="1px"
-      boxShadow={'base'}
-      bg={useColorModeValue('white', 'gray.300')}
-    >
-      <Heading fontSize="xl"></Heading>
-      <Stack pt={4} align={'center'}>
-        <Box pos={'relative'} height={'130px'} rounded="xl" shadow="xl">
-          <Image rounded={'lg'} boxSize="130px" objectFit="cover" src={pictureUrl} />
+    <Flex p={4} w="full" alignItems="center" justifyContent="center">
+      <Box
+        bg={useColorModeValue('white', 'gray.800')}
+        maxW="sm"
+        minH="xl"
+        borderWidth="1px"
+        rounded="lg"
+        shadow="lg"
+        position="relative"
+      >
+        <Image src={pictureUrl} alt={`Picture of ${pictureUrl}`} roundedTop="lg" />
+
+        <Box p="6">
+          <Box d="flex" alignItems="baseline">
+            <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
+              Oferta
+            </Badge>
+          </Box>
+          <Flex mt="1" justifyContent="space-between" alignContent="center">
+            <Box fontSize="2xl" fontWeight="semibold" as="h4" lineHeight="tight">
+              {title}
+            </Box>
+          </Flex>
+          <Flex mt="1" justifyContent="space-between" alignContent="center">
+            <Box fontSize="sm" fontWeight="normal" lineHeight="tight">
+              {description}
+            </Box>
+          </Flex>
+
+          <Flex justifyContent="space-between" alignContent="center">
+            {/* <Rating rating={data.rating} numReviews={data.numReviews} /> */}
+
+            <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
+              <Box as="span" color={'gray.600'} fontSize="sm" m={2}>
+                <Text as="s">$ {previusPrice}</Text>
+              </Box>
+
+              <Box as="span" color={'gray.600'} fontSize="lg">
+                $
+              </Box>
+              {price}
+
+              <ItemCount label="Add to cart" stock={stock} initial={1} onAdd={onAdd} />
+              <Box d="flex" alignItems="center">
+                <Box as="span" ml="4" color="gray.600" fontSize="sm">
+                  <Link to={'/item/' + id} display={'flex'}>
+                    Ver detalle del Producto
+                    <Icon
+                      as={BsFillArrowDownRightSquareFill}
+                      h={3}
+                      w={3}
+                      ml={2}
+                      alignSelf={'center'}
+                      color="pink.500"
+                    />
+                  </Link>
+                </Box>
+              </Box>
+            </Box>
+          </Flex>
         </Box>
-        <Text color={'gray.500'} fontSize={'xs'} textTransform={'uppercase'}>
-          {description}
-        </Text>
-        <Heading fontSize={'1xl'} fontFamily={'body'} fontWeight={500}>
-          {title}
-        </Heading>
-        <HStack>
-          <Button colorScheme="gray" size="xs" variant="outline">
-            <p>Ver Detalle del producto</p>
-          </Button>
-        </HStack>
-        <Stack direction={'row'} align={'center'}>
-          <Text fontWeight={800} fontSize={'xl'} color={'red.500'}>
-            $ {price}
-          </Text>
-          <Text textDecoration={'line-through'} color={'gray.600'}>
-            $ {previusPrice}
-          </Text>
-        </Stack>
-        <ItemCount stock={5} initial={1} onAdd={onAdd} />
-      </Stack>
-    </Box>
+      </Box>
+    </Flex>
   );
 };
 

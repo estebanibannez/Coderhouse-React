@@ -1,26 +1,66 @@
-import { SimpleGrid } from '@chakra-ui/react';
+import { Container, SimpleGrid, Box, Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import ItemList from './ItemList';
-import { getProducts } from '../../data';
+import { getProducts, getProductsBycategoryId } from '../../data';
+import { useParams } from 'react-router-dom';
+import { Skeleton } from '@chakra-ui/react';
 
 export default function ItemListContainer() {
+  const { id } = useParams();
+
   const [useData, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const onAdd = () => {
     console.log('padre');
   };
 
   useEffect(() => {
-    getProducts.then((response) => {
-      console.log('Listado de productos ', response);
-      setData(response);
-    });
+    //se ejecuta solo si no tiene una categoria seleccionada
+    if (!id) {
+      getProducts.then((response) => {
+        setData(response);
+        setLoading(false);
+      });
+    }
   }, [useData]);
+
+  useEffect(() => {
+    //se ejecuta cuando tiene una categoria seleccionada
+    getProductsBycategoryId(id).then((response) => {
+      setData(response);
+      setLoading(false);
+    });
+  }, [id]);
 
   return (
     <>
-      <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={1}>
-        <ItemList items={useData} onAdd={onAdd} />
-      </SimpleGrid>
+      <Container maxW="container.xl">
+        <SimpleGrid columns={[1, 2, 3, 4]}>
+          <ItemList items={useData} onAdd={onAdd} />
+        </SimpleGrid>
+
+        {loading && (
+          <SimpleGrid columns={[1, 2, 3, 4]}>
+            {Array(10)
+              .fill('')
+              .map((_, i) => {
+                return (
+                  <Skeleton m={4} minH="xl">
+                    <Flex p={4} w="full" alignItems="center" justifyContent="center">
+                      <Box
+                        maxW="sm"
+                        borderWidth="1px"
+                        rounded="lg"
+                        shadow="lg"
+                        position="relative"
+                      ></Box>
+                    </Flex>
+                  </Skeleton>
+                );
+              })}
+          </SimpleGrid>
+        )}
+      </Container>
     </>
   );
 }
