@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import ItemListContainer from './components/List/ItemListContainer';
 import ItemDetailContainer from './components/List/ItemDetailContainer';
 import { Flex, VStack, Heading, Container } from '@chakra-ui/react';
+import Error404 from './components/Error404/Error404';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
               </>
             }
           />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </Layout>
       <Footer />

@@ -8,9 +8,13 @@ const ItemDetailContainer = () => {
   const [useProductById, setProductById] = useState([]);
 
   useEffect(() => {
-    getItem(parseInt(id)).then((response) => {
-      setProductById(response);
-    });
+    getItem(parseInt(id))
+      .then((response) => {
+        setProductById(response);
+      })
+      .catch((error) => {
+        console.log('Ocurrio un error: ' + error);
+      });
   }, [id]);
 
   return <ItemDetail item={useProductById} />;
