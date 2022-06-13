@@ -45,7 +45,7 @@ export default function ItemListContainer() {
               .fill('')
               .map((_, i) => {
                 return (
-                  <Skeleton m={4} minH="xl">
+                  <Skeleton m={4} minH="xl" key={i}>
                     <Flex p={4} w="full" alignItems="center" justifyContent="center">
                       <Box
                         maxW="sm"
