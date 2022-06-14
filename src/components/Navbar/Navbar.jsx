@@ -47,8 +47,8 @@ export default function NavBar() {
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Link to="/" href={'/'}>
             <Image
-              width={140}
-              height={16}
+              // width={140}
+              height={14}
               src={window.location.origin + '/logo.png'}
               alt="DonPato"
             />

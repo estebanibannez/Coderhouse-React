@@ -21,10 +21,12 @@ import ItemCount from '../ItemCount/ItemCount';
 const ItemDetail = ({ item }) => {
   const [loading, setLoading] = useState(true);
   const [cant, setCant] = useState(0);
-  const [add, setAdd] = useState(false);
+  const [cart, setCart] = useState([]);
   useEffect(() => {
+    console.log('Carro', cart);
     console.log('Cambio cantidad', cant);
   }, [cant]);
+
   const {
     title,
     price,
@@ -38,8 +40,8 @@ const ItemDetail = ({ item }) => {
   } = item;
 
   const onAdd = () => {
-    console.log('padre', item);
-    setAdd(true);
+    setCart(item);
+    console.log('carro', { cart });
   };
 
   const navigate = useNavigate();
@@ -118,7 +120,7 @@ const ItemDetail = ({ item }) => {
                   </Box>
 
                   <Box d="flex" alignItems="center">
-                    {!add && (
+                    {cart.length <= 0 && (
                       <ItemCount
                         label="Add to cart"
                         stock={stock}

@@ -33,7 +33,9 @@ function App() {
             path="cart"
             element={
               <>
-                <Heading color="white">Carrito de compras.</Heading>
+                <Heading color="white" p={10}>
+                  Carrito de compras.
+                </Heading>
               </>
             }
           />

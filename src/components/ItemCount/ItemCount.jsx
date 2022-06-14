@@ -12,16 +12,11 @@ import {
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsPinAngle } from 'react-icons/bs';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
-  // const [count, setCount] = useState(initial);
   const toast = useToast();
   const toastIdRef = useRef();
-
-  useEffect(() => {
-    evaluateStock();
-  }, [cant]);
 
   const addToProduct = () => {
     if (evaluateStock()) {
