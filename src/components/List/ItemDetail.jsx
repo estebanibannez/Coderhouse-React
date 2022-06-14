@@ -38,7 +38,7 @@ const ItemDetail = ({ item }) => {
   } = item;
 
   const onAdd = () => {
-    console.log('padre');
+    console.log('padre', item);
     setAdd(true);
   };
 

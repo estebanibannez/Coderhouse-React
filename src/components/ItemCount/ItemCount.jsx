@@ -52,6 +52,15 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
         isClosable: true,
       });
       return false;
+    } else if (cant <= 0) {
+      toastIdRef.current = toast({
+        title: 'Seleccione una cantidad',
+        description: 'Es necesario seleccionar una cantidad para agregar al carro',
+        status: 'warning',
+        position: 'top-center',
+        duration: 2000,
+        isClosable: true,
+      });
     } else {
       return true;
     }
@@ -77,7 +86,7 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
             Agregar al carro
           </Button>
         </Stack>
-        <Divider orientation="vertical" m={4} />
+        <Divider orientation="vertical" m={2} />
         <Stack direction="row" w="100%">
           <Button colorScheme="pink" size={'sm'} onClick={handleDecrement}>
             -
