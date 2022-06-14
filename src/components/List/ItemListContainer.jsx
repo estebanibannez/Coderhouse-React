@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Box, Flex } from '@chakra-ui/react';
+import { SimpleGrid, Box, Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import ItemList from './ItemList';
 import { getProducts, getProductsBycategoryId } from '../../data';
@@ -34,7 +34,7 @@ export default function ItemListContainer() {
 
   return (
     <>
-      <Container maxW="container.xl">
+      <Box ml={10} mr={10}>
         <SimpleGrid columns={[1, 2, 3, 4]}>
           <ItemList items={useData} onAdd={onAdd} />
         </SimpleGrid>
@@ -60,7 +60,7 @@ export default function ItemListContainer() {
               })}
           </SimpleGrid>
         )}
-      </Container>
+      </Box>
     </>
   );
 }

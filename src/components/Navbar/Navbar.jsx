@@ -24,7 +24,7 @@ export default function NavBar() {
     <Box>
       <Flex
         bgGradient="linear(to-l,#28313B,#28313B)"
-        color={useColorModeValue('gray.600', 'white')}
+        color={useColorModeValue('gray.500', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -94,9 +94,9 @@ export default function NavBar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('gray.300', 'gray.200');
-  const linkHoverColor = useColorModeValue('pink.500', 'white');
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+  const linkColor = useColorModeValue('white', 'white');
+  const linkHoverColor = useColorModeValue('gray', 'white');
+  const popoverContentBgColor = useColorModeValue('white', 'white');
 
   return (
     <Stack direction={'row'} spacing={2}>
@@ -150,11 +150,11 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
+      _hover={{ bg: useColorModeValue('#28313B', 'white') }}
     >
       <Stack direction={'row'} align={'center'}>
         <Box>
-          <Text transition={'all .3s ease'} _groupHover={{ color: 'pink.400' }} fontWeight={500}>
+          <Text transition={'all .3s ease'} _groupHover={{ color: 'white' }} fontWeight={500}>
             {label}
           </Text>
           <Text fontSize={'sm'}>{subLabel}</Text>
@@ -177,7 +177,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+    <Stack bg={useColorModeValue('#28313B', 'white')} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -200,7 +200,7 @@ const MobileNavItem = ({ label, children, href }) => {
           textDecoration: 'none',
         }}
       >
-        <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
+        <Text fontWeight={600} color={useColorModeValue('white', 'gray.500')}>
           {label}
         </Text>
         {children && (
@@ -220,7 +220,9 @@ const MobileNavItem = ({ label, children, href }) => {
           pl={4}
           borderLeft={1}
           borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          borderColor={useColorModeValue('pink.500', 'gray.500')}
+          color="gray.500"
+          fontWeight={500}
           align={'start'}
         >
           {children &&

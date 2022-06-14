@@ -1,9 +1,15 @@
-import { Box } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 const Layout = ({ children }) => {
   return (
-    <Box minH="100vh" pb={10} bgGradient="linear(to-l,#28313B,#28313B)" m={{ base: 0, md: 0 }}>
+    <Container
+      minH="100vh"
+      maxW="container.3xl"
+      pb={10}
+      p={0}
+      bgGradient="linear(to-l,#28313B,#28313B)"
+    >
       {children}
-    </Box>
+    </Container>
   );
 };
 

@@ -3,18 +3,28 @@ import {
   Text,
   Image,
   useColorModeValue,
-  HStack,
+  Container,
   Flex,
   Badge,
   Icon,
   Circle,
+  Stack,
+  Button,
 } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { Skeleton, SkeletonText } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsFillArrowDownLeftCircleFill } from 'react-icons/bs';
+import { FiCheck } from 'react-icons/fi';
+import ItemCount from '../ItemCount/ItemCount';
+
 const ItemDetail = ({ item }) => {
   const [loading, setLoading] = useState(true);
+  const [cant, setCant] = useState(0);
+  const [add, setAdd] = useState(false);
+  useEffect(() => {
+    console.log('Cambio cantidad', cant);
+  }, [cant]);
   const {
     title,
     price,
@@ -27,6 +37,13 @@ const ItemDetail = ({ item }) => {
     pictureUrl3,
   } = item;
 
+  const onAdd = () => {
+    console.log('padre');
+    setAdd(true);
+  };
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -35,68 +52,62 @@ const ItemDetail = ({ item }) => {
 
   return (
     <>
-      <Flex p={10} w="full" alignItems="center" justifyContent="center">
-        <Box
+      <Container maxW={'container.md'} pt={2}>
+        <Stack
           bg={useColorModeValue('white', 'gray.800')}
-          maxW="md"
-          p={4}
           borderWidth="1px"
           rounded="lg"
           shadow="lg"
+          maxW="100%"
           position="relative"
         >
-          <Circle
-            size="10px"
-            position="absolute"
-            top={2}
-            right={2}
-            bg="red.300"
-            color="white"
-          ></Circle>
-          <Box position="absolute" ml={2}>
-            <Badge right={2}>Stock: {stock}</Badge>
-          </Box>
-          <Skeleton isLoaded={!loading} p={2}>
-            <Image rounded={'lg'} boxSize="20rem" objectFit="cover" src={pictureUrl} />
-          </Skeleton>
-          <HStack p={2}>
-            <Skeleton isLoaded={!loading} height={'130px'}>
-              <Box pos={'relative'} height={'130px'} rounded="xl" shadow="xl">
-                <Image rounded={'sm'} boxSize="130px" objectFit="cover" src={pictureUrl1} />
-              </Box>
+          <Stack direction="row" m={1}>
+            <Skeleton isLoaded={!loading} boxSize="200px">
+              <Image rounded={'sm'} boxSize="200px" objectFit="cover" src={pictureUrl1} />
             </Skeleton>
-            <Skeleton isLoaded={!loading} height={'130px'}>
-              <Box pos={'relative'} height={'130px'} rounded="xl" shadow="xl">
-                <Image rounded={'sm'} boxSize="130px" objectFit="cover" src={pictureUrl2} />
-              </Box>
+            <Skeleton isLoaded={!loading} boxSize="200px">
+              <Image rounded={'sm'} boxSize="200px" objectFit="cover" src={pictureUrl2} />
             </Skeleton>
-            <Skeleton isLoaded={!loading} height={'130px'}>
-              <Box pos={'relative'} height={'130px'} rounded="xl" shadow="xl">
-                <Image rounded={'sm'} boxSize="130px" objectFit="cover" src={pictureUrl3} />
-              </Box>
+            <Skeleton isLoaded={!loading} boxSize="200px">
+              <Image rounded={'sm'} boxSize="200px" objectFit="cover" src={pictureUrl3} />
             </Skeleton>
-          </HStack>
-          <SkeletonText isLoaded={!loading} mt="4" noOfLines={4} spacing="4" />
-          {!loading && (
-            <Box p="6">
-              <Box d="flex" alignItems="baseline">
-                <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
-                  Oferta
-                </Badge>
-              </Box>
+          </Stack>
 
-              <Flex mt="1" justifyContent="space-between" alignContent="center">
-                <Box fontSize="2xl" fontWeight="semibold" as="h4" lineHeight="tight">
-                  {title}
-                </Box>
-              </Flex>
-              <Flex mt="1" justifyContent="space-between" alignContent="center">
-                <Box fontSize="sm" fontWeight="normal" lineHeight="tight">
-                  {description}
-                </Box>
-              </Flex>
+          <Box direction="row" m={1}>
+            <Circle
+              size="10px"
+              position="absolute"
+              top={2}
+              right={2}
+              bg="red.300"
+              color="white"
+            ></Circle>
 
-              <Flex justifyContent="space-between" alignContent="center">
+            <Skeleton isLoaded={!loading} p={2}>
+              <Image rounded={'lg'} boxSize="sm" objectFit="cover" src={pictureUrl} />
+            </Skeleton>
+
+            <SkeletonText isLoaded={!loading} mt="4" noOfLines={4} spacing="4" />
+            {!loading && (
+              <Box p="6">
+                <Box d="flex" alignItems="baseline">
+                  <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
+                    Oferta
+                  </Badge>
+                </Box>
+
+                <Flex mt="1" justifyContent="space-between" alignContent="center">
+                  <Box fontSize="2xl" fontWeight="semibold" as="h4" lineHeight="tight">
+                    {title}
+                  </Box>
+                </Flex>
+                <Flex mt="1" justifyContent="space-between" alignContent="center">
+                  <Box fontSize="sm" fontWeight="normal" lineHeight="tight">
+                    {description}
+                  </Box>
+                </Flex>
+
+                {/* <Box d="flex" justifyContent="space-between" alignContent="center"> */}
                 <Box fontSize="2xl" color={'white'}>
                   <Box as="span" color={'gray.600'} fontSize="sm" m={2}>
                     <Text as="s">$ {previusPrice}</Text>
@@ -107,6 +118,27 @@ const ItemDetail = ({ item }) => {
                   </Box>
 
                   <Box d="flex" alignItems="center">
+                    {!add && (
+                      <ItemCount
+                        label="Add to cart"
+                        stock={stock}
+                        initial={1}
+                        onAdd={onAdd}
+                        cant={cant}
+                        setCant={setCant}
+                      />
+                    )}
+                    <Stack direction="row" mt={2}>
+                      <Button
+                        rightIcon={<FiCheck />}
+                        w="100%"
+                        colorScheme="blue"
+                        variant="outline"
+                        onClick={() => navigate('/cart')}
+                      >
+                        Finalizar compra
+                      </Button>
+                    </Stack>
                     <Box as="span" ml="4" color="gray.600" fontSize="sm">
                       <Link to={'/'} display={'flex'}>
                         Volver al home
@@ -122,11 +154,11 @@ const ItemDetail = ({ item }) => {
                     </Box>
                   </Box>
                 </Box>
-              </Flex>
-            </Box>
-          )}
-        </Box>
-      </Flex>
+              </Box>
+            )}
+          </Box>
+        </Stack>
+      </Container>
     </>
   );
 };

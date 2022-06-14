@@ -28,7 +28,7 @@ const products = [
   },
   {
     id: 3,
-    title: 'Marty Patfly',
+    title: 'Marty',
     description: 'Figura coleccionable Back to The Future',
     previusPrice: 6000,
     price: 3000,
@@ -68,7 +68,7 @@ const products = [
   },
   {
     id: 6,
-    title: 'Robin Pato!',
+    title: 'Robin',
     description: 'Figura coleccionable Batman',
     previusPrice: 5000,
     price: 2000,

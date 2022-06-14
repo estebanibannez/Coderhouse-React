@@ -1,35 +1,27 @@
 import {
-  HStack,
-  Stack,
   Button,
   Input,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  Box,
   Flex,
-  chakra,
-  Tooltip,
-  Icon,
-  Container,
   useToast,
   Divider,
   Center,
+  Tag,
+  TagLeftIcon,
+  TagLabel,
+  Stack,
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
-import { useState, useEffect, useRef } from 'react';
+import { BsPinAngle } from 'react-icons/bs';
+import { useEffect, useRef } from 'react';
 
-const ItemCount = ({ stock, initial, onAdd }) => {
-  const [count, setCount] = useState(initial);
-  const [isntStock, setntStock] = useState(false);
-
+const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
+  // const [count, setCount] = useState(initial);
   const toast = useToast();
   const toastIdRef = useRef();
 
   useEffect(() => {
     evaluateStock();
-  }, [count]);
+  }, [cant]);
 
   const addToProduct = () => {
     if (evaluateStock()) {
@@ -38,20 +30,19 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   };
 
   const handleOnChange = (e) => {
-    setCount(parseInt(e.target.value, 10));
+    setCant(parseInt(e.target.value, 10));
   };
 
   const handleIncrement = () => {
-    if (count <= stock) setCount((prevCount) => prevCount + 1);
+    if (cant <= stock) setCant((prevCount) => prevCount + 1);
   };
 
   const handleDecrement = () => {
-    if (count > 0) setCount((prevCount) => prevCount - 1);
+    if (cant > 0) setCant((prevCount) => prevCount - 1);
   };
 
   const evaluateStock = () => {
-    if (count > stock) {
-      // setntStock(true);
+    if (cant > stock) {
       toastIdRef.current = toast({
         title: 'Sin Stock',
         description: 'No tenemos Stock suficiente para esa cantidad',
@@ -62,61 +53,50 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       });
       return false;
     } else {
-      // setntStock(false);
       return true;
     }
   };
 
   return (
     <>
+      <Flex>
+        <Tag size="sm" key="sm" variant="solid" colorScheme="cyan">
+          <TagLeftIcon boxSize="12px" as={BsPinAngle} />
+          <TagLabel>{stock} Disponibles</TagLabel>
+        </Tag>
+      </Flex>
       <Center height="50px">
-        <Box pr={10}>
-          <Tooltip
-            label="Añadir al carro"
-            bg="white"
-            placement={'right'}
-            color={'gray.800'}
-            fontSize={'1.2em'}
-            pr={10}
+        <Stack direction="row" w="100%">
+          <Button
+            leftIcon={<FiShoppingCart />}
+            onClick={addToProduct}
+            colorScheme="pink"
+            variant="solid"
+            size={'sm'}
           >
-            <chakra.a onClick={addToProduct} display={'flex'}>
-              <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} color="pink.500" />
-            </chakra.a>
-          </Tooltip>
-        </Box>
+            Agregar al carro
+          </Button>
+        </Stack>
+        <Divider orientation="vertical" m={4} />
+        <Stack direction="row" w="100%">
+          <Button colorScheme="pink" size={'sm'} onClick={handleDecrement}>
+            -
+          </Button>
+          <Input
+            name="cant"
+            value={cant}
+            onChange={handleOnChange}
+            size={'sm'}
+            fontWeight={700}
+            textAlign={'center'}
+            textColor="black"
+          />
 
-        <Divider orientation="vertical" pr={2} />
-        <Button colorScheme="gray" size={'sm'} onClick={handleDecrement}>
-          -
-        </Button>
-        <Input
-          name="cant"
-          value={count}
-          onChange={handleOnChange}
-          size={'sm'}
-          fontWeight={800}
-          textAlign={'center'}
-        />
-
-        <Button colorScheme="gray" size={'sm'} onClick={handleIncrement}>
-          +
-        </Button>
+          <Button colorScheme="pink" size={'sm'} onClick={handleIncrement}>
+            +
+          </Button>
+        </Stack>
       </Center>
-      <Flex justify="center"></Flex>
-      {/* <Divider /> */}
-      {/* <Stack pt={4} align={'center'}>
-        <Container maxW="sm">
-          <Stack direction={'row'} align={'center'}></Stack>
-        </Container>
-        {isntStock && (
-          <Stack>
-            <Alert status="warning" size={'sm'} fontSize={'sm'}>
-              <AlertIcon />
-              No tenemos Stock suficiente para esa cantidad
-            </Alert>
-          </Stack>
-        )}
-      </Stack> */}
     </>
   );
 };
