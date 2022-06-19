@@ -38,7 +38,7 @@ export const CartItem = (props) => {
 
   useEffect(() => {
     addToCart(props, useCant);
-  }, [setCant]);
+  }, []);
 
   const handleOnChange = (e) => {
     debugger;
