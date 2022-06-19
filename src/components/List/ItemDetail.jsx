@@ -11,21 +11,23 @@ import {
   Stack,
   Button,
 } from '@chakra-ui/react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Skeleton, SkeletonText } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsFillArrowDownLeftCircleFill } from 'react-icons/bs';
 import { FiCheck } from 'react-icons/fi';
 import ItemCount from '../ItemCount/ItemCount';
+import CartContext from '../Context/CartContext';
 
 const ItemDetail = ({ item }) => {
   const [loading, setLoading] = useState(true);
   const [cant, setCant] = useState(0);
-  const [cart, setCart] = useState([]);
-  useEffect(() => {
-    console.log('Carro', cart);
-    console.log('Cambio cantidad', cant);
-  }, [cant]);
+  const { addToCart, isInCart } = useContext(CartContext);
+
+  // useEffect(() => {
+
+  //   console.log('Cambio cantidad', cant);
+  // }, [cant]);
 
   const {
     title,
@@ -40,8 +42,11 @@ const ItemDetail = ({ item }) => {
   } = item;
 
   const onAdd = () => {
-    setCart(item);
-    console.log('carro', { cart });
+    debugger;
+    // setCart(item);
+    isInCart(item.id);
+    addToCart(item, cant);
+    // console.log('carro', { cart });
   };
 
   const navigate = useNavigate();
@@ -120,16 +125,16 @@ const ItemDetail = ({ item }) => {
                   </Box>
 
                   <Box d="flex" alignItems="center">
-                    {cart.length <= 0 && (
-                      <ItemCount
-                        label="Add to cart"
-                        stock={stock}
-                        initial={1}
-                        onAdd={onAdd}
-                        cant={cant}
-                        setCant={setCant}
-                      />
-                    )}
+                    {/* {cart.length <= 0 && ( */}
+                    <ItemCount
+                      label="Add to cart"
+                      stock={stock}
+                      initial={1}
+                      onAdd={onAdd}
+                      cant={cant}
+                      setCant={setCant}
+                    />
+                    {/* )} */}
                     <Stack direction="row" mt={2}>
                       <Button
                         rightIcon={<FiCheck />}

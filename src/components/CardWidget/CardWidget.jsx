@@ -9,7 +9,7 @@ const CardWidget = ({ cartAmount }) => {
         <Box>
           <Text fontWeight="bold">
             <Badge ml="1" fontSize="1.3em" colorScheme="pink" m={2}>
-              {cartAmount}
+              {cartAmount > 0 ? cartAmount : null}
             </Badge>
           </Text>
         </Box>

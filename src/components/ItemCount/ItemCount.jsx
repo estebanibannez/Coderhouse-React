@@ -19,6 +19,7 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
   const toastIdRef = useRef();
 
   const addToProduct = () => {
+    debugger;
     if (evaluateStock()) {
       onAdd();
     }
