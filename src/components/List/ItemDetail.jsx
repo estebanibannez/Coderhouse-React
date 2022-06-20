@@ -90,7 +90,7 @@ const ItemDetail = ({ item }) => {
             </Skeleton>
           </Stack>
 
-          <Box direction="row" m={1}>
+          <Box direction="row" mr={2}>
             <Circle
               size="10px"
               position="absolute"
@@ -100,7 +100,7 @@ const ItemDetail = ({ item }) => {
               color="white"
             ></Circle>
 
-            <Skeleton isLoaded={!loading} p={2}>
+            <Skeleton isLoaded={!loading} boxSize="400px" m={2}>
               <Image
                 rounded={'lg'}
                 boxSize="sm"
@@ -111,7 +111,7 @@ const ItemDetail = ({ item }) => {
               />
             </Skeleton>
 
-            <SkeletonText isLoaded={!loading} mt="4" noOfLines={4} spacing="4" />
+            <SkeletonText isLoaded={!loading} mt="4" noOfLines={4} spacing="4" m={2} />
             {!loading && (
               <Box p="6">
                 <Box d="flex" alignItems="baseline">

@@ -1,21 +1,27 @@
 import { Link } from 'react-router-dom';
-import { Box, Heading, Text, Button } from '@chakra-ui/react';
+import { Box, Heading, Text, Button, Image } from '@chakra-ui/react';
 
 export default function Error404() {
   return (
-    <Box textAlign="center" py={10} px={6}>
+    <Box textAlign="center" py={5} px={5}>
       <Heading
         display="inline-block"
         as="h2"
         size="2xl"
         bgGradient="linear(to-r, teal.400, teal.600)"
         backgroundClip="text"
+        p={4}
       >
-        404
-      </Heading>
-      <Text fontSize="18px" mt={3} color="white" mb={2}>
+        <Image
+          rounded={'lg'}
+          boxSize="sm"
+          objectFit="cover"
+          w="full"
+          h="auto"
+          src={window.location.origin + '/notfound.png'}
+        />
         Ups ! Pagina no encontrada
-      </Text>
+      </Heading>
       <Text color={'gray.500'} mb={6}>
         La pagina que intentas acceder no existe.
       </Text>
