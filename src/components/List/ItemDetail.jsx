@@ -100,7 +100,7 @@ const ItemDetail = ({ item }) => {
               color="white"
             ></Circle>
 
-            <Skeleton isLoaded={!loading} boxSize="400px" m={2}>
+            <Skeleton isLoaded={!loading} boxSize="auto" m={2}>
               <Image
                 rounded={'lg'}
                 boxSize="sm"
