@@ -29,7 +29,7 @@ const useInitialState = () => {
       setState({
         ...state,
         cart: [...state.cart, newItem],
-        total: state.total + payload.price,
+        total: state.total + payload.price * qty,
       });
     } else {
       debugger;

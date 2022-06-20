@@ -36,10 +36,6 @@ export const CartItem = (props) => {
 
   const [useCant, setCant] = useState(quantity);
 
-  useEffect(() => {
-    addToCart(props, useCant);
-  }, []);
-
   const handleOnChange = (e) => {
     debugger;
     setCant(parseInt(e.target.value, 10));
@@ -52,7 +48,14 @@ export const CartItem = (props) => {
     }
   };
 
+  // useEffect(() => {
+  //   debugger;
+  //   console.log(useCant);
+  //   // addToCart(props, useCant);
+  // }, [useCant]);
+
   const handleDecrement = () => {
+    debugger;
     if (useCant > 0) setCant((prevCount) => prevCount - 1);
   };
 
@@ -108,11 +111,11 @@ export const CartItem = (props) => {
             //   onChangeQuantity?.(+e.currentTarget.value);
             // }}
             value={quantity}
-            onClick={(e) => {
-              debugger;
-              handleDecrement?.(-e.currentTarget.value);
-            }}
-            // onClick={handleDecrement}
+            // onClick={(e) => {
+            //   debugger;
+            //   handleDecrement?.(-e.currentTarget.value);
+            // }}
+            onClick={handleDecrement}
           >
             -
           </Button>
@@ -129,9 +132,7 @@ export const CartItem = (props) => {
           <Button
             colorScheme="pink"
             size={'sm'}
-            onClick={(e) => {
-              handleIncrement?.(+e.currentTarget.value);
-            }}
+            onClick={handleIncrement}
             // onClick={(e) => {
             //   handleIncrement(+e.currentTarget.value);
             // }}

@@ -74,7 +74,9 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
         <Stack direction="row" w="100%">
           <Button
             leftIcon={<FiShoppingCart />}
-            onClick={addToProduct}
+            onClick={() => {
+              addToProduct();
+            }}
             colorScheme="pink"
             variant="solid"
             size={'sm'}
