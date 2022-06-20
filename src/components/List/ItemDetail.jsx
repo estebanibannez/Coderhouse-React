@@ -22,7 +22,7 @@ import CartContext from '../Context/CartContext';
 const ItemDetail = ({ item }) => {
   const [loading, setLoading] = useState(true);
   const [cant, setCant] = useState(0);
-  const { addToCart, isInCart } = useContext(CartContext);
+  const { addToCart, isInCart, formatPrice } = useContext(CartContext);
 
   const {
     title,
@@ -134,11 +134,11 @@ const ItemDetail = ({ item }) => {
                 {/* <Box d="flex" justifyContent="space-between" alignContent="center"> */}
                 <Box fontSize="2xl" color={'white'}>
                   <Box as="span" color={'gray.600'} fontSize="sm" m={2}>
-                    <Text as="s">$ {previusPrice}</Text>
+                    <Text as="s">{formatPrice(previusPrice)}</Text>
                   </Box>
 
                   <Box as="span" color={'pink.500'} fontSize="3xl" fontWeight={'bold'}>
-                    ${price}
+                    {formatPrice(price)}
                   </Box>
 
                   <Box d="flex" alignItems="center">
