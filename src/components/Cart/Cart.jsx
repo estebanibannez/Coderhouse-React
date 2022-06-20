@@ -1,23 +1,14 @@
 import {
   Heading,
   HStack,
-  VStack,
   Text,
-  Divider,
-  Alert,
-  AlertTitle,
-  AlertDescription,
-  AlertIcon,
   useColorModeValue,
   Box,
-  Icon,
-  // Link,
   Stack,
   Flex,
   Button,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { BsFillArrowDownLeftCircleFill } from 'react-icons/bs';
 import { useContext } from 'react';
 import CartContext from '../Context/CartContext';
 import { CartItem } from '../Cart/CartItem';
@@ -28,6 +19,7 @@ export const Cart = () => {
 
   const {
     state: { cart },
+    emptyCart,
   } = useContext(CartContext);
 
   return (
@@ -83,8 +75,17 @@ export const Cart = () => {
                 {cart.map((item, i) => (
                   <CartItem key={item.id} {...item} indexValue={i} />
                 ))}
+                <Flex direction="column" align="flex-end" flex="1">
+                  <HStack mt="6" fontWeight="semibold">
+                    <Button color={secondaryTextColor} variant="solid" onClick={emptyCart}>
+                      Vaciar el carrito
+                    </Button>
+                  </HStack>
+                </Flex>
+
                 <Flex direction="column" align="center" flex="1">
                   <CartOrderSummary />
+
                   <HStack mt="6" fontWeight="semibold">
                     <p>o</p>
                     <Link to={'/productos'} display={'flex'}>

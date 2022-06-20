@@ -1,8 +1,8 @@
 import {
   Button,
+  Divider,
   Flex,
   Heading,
-  Link,
   Stack,
   Text,
   useColorModeValue as mode,
@@ -12,16 +12,14 @@ import { FaArrowRight } from 'react-icons/fa';
 import { useContext } from 'react';
 import CartContext from '../Context/CartContext';
 
-const OrderSummaryItem = (props) => {
-  const { label, value, children } = props;
-
+const OrderSummaryItem = ({ item }) => {
+  const { formatPrice } = useContext(CartContext);
   return (
-    <Flex justify="space-between" fontSize="sm">
-      <Text fontWeight="medium" color={mode('gray.500', 'gray.400')}>
-        {label}
-      </Text>
-      {value ? <Text fontWeight="medium">{value}</Text> : children}
-    </Flex>
+    <>
+      <Flex justify="flex-end">
+        <Text fontWeight="medium">{formatPrice(item.price * item.quantity)}</Text>
+      </Flex>
+    </>
   );
 };
 
@@ -41,18 +39,25 @@ export const CartOrderSummary = () => {
       <Heading size="md">Detalle de la compra</Heading>
 
       <Stack spacing="6">
-        <OrderSummaryItem label="Subtotal" value={formatPrice(state.total)} />
+        <Text fontWeight="medium" color={mode('gray.500', 'gray.400')}>
+          Subtotal
+        </Text>
 
+        {state.cart.map((item, index) => (
+          <OrderSummaryItem item={item} key={item.id} />
+        ))}
+        <Divider orientation="horizontal" />
         <Flex justify="space-between">
-          <Text fontSize="lg" fontWeight="semibold">
+          <Text fontSize="2xl" fontWeight="semibold">
             Total
           </Text>
+
           <Text fontSize="xl" fontWeight="extrabold">
             {formatPrice(state.total)}
           </Text>
         </Flex>
       </Stack>
-      <Button colorScheme="pink" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
+      <Button color="pink.500" variant="solid" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
         Ir a Pagar
       </Button>
     </Stack>

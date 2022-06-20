@@ -1,19 +1,27 @@
 import { BsCart3 } from 'react-icons/bs';
-import { Badge, Text, Box, Flex } from '@chakra-ui/react';
+import { Badge, Text, Box, Flex, Button } from '@chakra-ui/react';
+import { useContext } from 'react';
+
+import CartContext from './../Context/CartContext';
+import { Link } from 'react-router-dom';
 
 const CardWidget = ({ cartAmount }) => {
+  const { getItemQty } = useContext(CartContext);
+
   return (
     <>
-      <Flex mr="10">
-        <BsCart3 size={40} color="pink" m={2} />
-        <Box>
-          <Text fontWeight="bold">
-            <Badge ml="1" fontSize="1.3em" colorScheme="pink" m={2}>
-              {cartAmount > 0 ? cartAmount : null}
-            </Badge>
-          </Text>
-        </Box>
-      </Flex>
+      <Link to={'/cart'}>
+        <Flex mr="10">
+          <BsCart3 size={40} color="pink" m={2} />
+          <Box>
+            <Text fontWeight="bold">
+              <Badge ml="1" fontSize="1.3em" colorScheme="pink" m={2}>
+                {getItemQty()}
+              </Badge>
+            </Text>
+          </Box>
+        </Flex>
+      </Link>
     </>
   );
 };

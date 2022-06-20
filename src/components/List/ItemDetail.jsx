@@ -24,11 +24,6 @@ const ItemDetail = ({ item }) => {
   const [cant, setCant] = useState(0);
   const { addToCart, isInCart } = useContext(CartContext);
 
-  // useEffect(() => {
-
-  //   console.log('Cambio cantidad', cant);
-  // }, [cant]);
-
   const {
     title,
     price,
@@ -42,11 +37,8 @@ const ItemDetail = ({ item }) => {
   } = item;
 
   const onAdd = () => {
-    debugger;
-    // setCart(item);
-    isInCart(item.id);
+    // isInCart(item.id);
     addToCart(item, cant);
-    // console.log('carro', { cart });
   };
 
   const navigate = useNavigate();

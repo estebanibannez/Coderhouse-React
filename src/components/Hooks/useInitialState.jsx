@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useToast } from '@chakra-ui/react';
 
 const initialState = {
   cart: [],
@@ -7,36 +8,34 @@ const initialState = {
 
 const useInitialState = () => {
   const [state, setState] = useState(initialState);
-
-  //agrega un producto
-  // const addToCart = (payload, quantity) => {
-  //   debugger;
-  //   setState({
-  //     ...state,
-  //     cart: [...state.cart, payload],
-  //     total: state.total + payload.price,
-  //   });
+  const toast = useToast();
+  const toastIdRef = useRef();
+  // const isInCart = (id) => {
+  //   return state.cart.some((product) => product.id === id);
   // };
-  const isInCart = (id) => {
-    return state.cart.some((product) => product.id === id);
-  };
 
+  //agregar productos
   const addToCart = (payload, qty) => {
-    debugger;
-    const newItem = { ...payload, quantity: qty };
-    if (!state.cart.includes(payload)) {
-      debugger;
-      setState({
-        ...state,
-        cart: [...state.cart, newItem],
-        total: state.total + payload.price * qty,
-      });
+    const exist = state.cart.some((element) => element.id === payload.id);
+    if (!exist) {
+      if (evaluateStock(payload.stock, qty)) {
+        const newItem = { ...payload, quantity: qty };
+
+        setState({
+          ...state,
+          cart: [...state.cart, newItem],
+          total: state.total + payload.price * qty,
+        });
+      }
     } else {
-      debugger;
       const product = state.cart.findIndex((c) => c.id === payload.id);
-      const newState = { ...state };
-      newState.cart[product].quantity += qty;
-      setState(newState);
+
+      if (evaluateStock(state.cart[product].stock, state.cart[product].quantity + qty)) {
+        const newState = { ...state };
+        newState.cart[product].quantity += qty;
+        newState.total += payload.price;
+        setState(newState);
+      }
     }
   };
 
@@ -47,14 +46,22 @@ const useInitialState = () => {
     setState({
       ...state,
       cart: [...newArray],
-      total: state.total - payload.price,
+      total: state.total - payload.price * payload.quantity,
     });
   };
 
+  //vaciar el carro
   const emptyCart = (id) => {
     setState(initialState);
   };
 
+  //obtener cantidad de items del carro
+  const getItemQty = () => {
+    const quantity = state.cart.reduce((acc, item) => (acc += item.quantity), 0);
+    return quantity;
+  };
+
+  //formateo de precio de los items del carro
   const formatPrice = (value, opts = {}) => {
     const { locale = 'es-CL', currency = 'CLP' } = opts;
     const formatter = new Intl.NumberFormat(locale, {
@@ -65,13 +72,41 @@ const useInitialState = () => {
     return formatter.format(value);
   };
 
+  const evaluateStock = (stock, qty) => {
+    if (qty > stock) {
+      toastIdRef.current = toast({
+        title: 'Sin Stock',
+        description: 'No tenemos Stock suficiente para esa cantidad',
+        status: 'warning',
+        position: 'top-center',
+        duration: 2000,
+        isClosable: true,
+      });
+      return false;
+    } else if (qty <= 0) {
+      toastIdRef.current = toast({
+        title: 'Seleccione una cantidad',
+        description: 'Es necesario seleccionar una cantidad para agregar al carro',
+        status: 'warning',
+        position: 'top-center',
+        duration: 2000,
+        isClosable: true,
+      });
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   return {
     state,
     addToCart,
     removeFromCart,
     formatPrice,
     emptyCart,
-    isInCart,
+    getItemQty,
+    evaluateStock,
+    // isInCart,
   };
 };
 

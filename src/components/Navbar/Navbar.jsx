@@ -18,6 +18,7 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@ch
 import CardWidget from '../CardWidget/CardWidget';
 import CartContext from '../Context/CartContext';
 import { useContext } from 'react';
+
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
   const {

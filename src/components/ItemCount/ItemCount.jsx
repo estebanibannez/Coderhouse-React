@@ -18,12 +18,11 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
   const toast = useToast();
   const toastIdRef = useRef();
 
-  const addToProduct = () => {
-    debugger;
-    if (evaluateStock()) {
-      onAdd();
-    }
-  };
+  // const addToProduct = () => {
+  //   // if (evaluateStock()) {
+  //   onAdd();
+  //   // }
+  // };
 
   const handleOnChange = (e) => {
     setCant(parseInt(e.target.value, 10));
@@ -37,30 +36,32 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
     if (cant > 0) setCant((prevCount) => prevCount - 1);
   };
 
-  const evaluateStock = () => {
-    if (cant > stock) {
-      toastIdRef.current = toast({
-        title: 'Sin Stock',
-        description: 'No tenemos Stock suficiente para esa cantidad',
-        status: 'warning',
-        position: 'top-center',
-        duration: 2000,
-        isClosable: true,
-      });
-      return false;
-    } else if (cant <= 0) {
-      toastIdRef.current = toast({
-        title: 'Seleccione una cantidad',
-        description: 'Es necesario seleccionar una cantidad para agregar al carro',
-        status: 'warning',
-        position: 'top-center',
-        duration: 2000,
-        isClosable: true,
-      });
-    } else {
-      return true;
-    }
-  };
+  // const evaluateStock = () => {
+  //   debugger;
+  //   if (cant > stock) {
+  //     toastIdRef.current = toast({
+  //       title: 'Sin Stock',
+  //       description: 'No tenemos Stock suficiente para esa cantidad',
+  //       status: 'warning',
+  //       position: 'top-center',
+  //       duration: 2000,
+  //       isClosable: true,
+  //     });
+  //     return false;
+  //   } else if (cant <= 0) {
+  //     toastIdRef.current = toast({
+  //       title: 'Seleccione una cantidad',
+  //       description: 'Es necesario seleccionar una cantidad para agregar al carro',
+  //       status: 'warning',
+  //       position: 'top-center',
+  //       duration: 2000,
+  //       isClosable: true,
+  //     });
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // };
 
   return (
     <>
@@ -75,7 +76,7 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
           <Button
             leftIcon={<FiShoppingCart />}
             onClick={() => {
-              addToProduct();
+              onAdd();
             }}
             colorScheme="pink"
             variant="solid"

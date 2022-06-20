@@ -1,63 +1,25 @@
 import React from 'react';
 import {
-  Heading,
   HStack,
-  VStack,
   Image,
-  AspectRatio,
   Text,
-  Icon,
   Box,
   Stack,
-  useColorModeValue as mode,
+  useColorModeValue,
   Flex,
   Button,
-  Spacer,
   CloseButton,
   // Link,
   Input,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
-import { BsTrash } from 'react-icons/bs';
 
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import CartContext from '../Context/CartContext';
 
 export const CartItem = (props) => {
-  const {
-    state: { cart },
-    formatPrice,
-    addToCart,
-    removeFromCart,
-  } = useContext(CartContext);
+  const { formatPrice, removeFromCart } = useContext(CartContext);
 
-  const { title, description, quantity, pictureUrl, price, categoryId, stock } = props;
-
-  const [useCant, setCant] = useState(quantity);
-
-  const handleOnChange = (e) => {
-    debugger;
-    setCant(parseInt(e.target.value, 10));
-  };
-
-  const handleIncrement = () => {
-    debugger;
-    if (useCant <= stock) {
-      setCant((prevCount) => prevCount + 1);
-    }
-  };
-
-  // useEffect(() => {
-  //   debugger;
-  //   console.log(useCant);
-  //   // addToCart(props, useCant);
-  // }, [useCant]);
-
-  const handleDecrement = () => {
-    debugger;
-    if (useCant > 0) setCant((prevCount) => prevCount - 1);
-  };
+  const { title, description, quantity, pictureUrl, price, categoryId } = props;
 
   return (
     <Flex
@@ -104,41 +66,16 @@ export const CartItem = (props) => {
         }}
       >
         <Stack direction="row" w="30%">
-          <Button
-            colorScheme="pink"
-            size={'sm'}
-            // onChange={(e) => {
-            //   onChangeQuantity?.(+e.currentTarget.value);
-            // }}
-            value={quantity}
-            // onClick={(e) => {
-            //   debugger;
-            //   handleDecrement?.(-e.currentTarget.value);
-            // }}
-            onClick={handleDecrement}
-          >
-            -
-          </Button>
           <Input
             name="cant"
             value={quantity}
-            onChange={handleOnChange}
+            // onChange={handleOnChange}
             size={'sm'}
             fontWeight={700}
             textAlign={'center'}
             textColor="white"
+            readOnly={true}
           />
-
-          <Button
-            colorScheme="pink"
-            size={'sm'}
-            onClick={handleIncrement}
-            // onClick={(e) => {
-            //   handleIncrement(+e.currentTarget.value);
-            // }}
-          >
-            +
-          </Button>
         </Stack>
         <HStack spacing="1">
           <Text as="span" fontWeight="medium" color="gray.400" textDecoration={'none'}>
@@ -148,7 +85,6 @@ export const CartItem = (props) => {
         <CloseButton
           aria-label={`Delete ${title} from cart`}
           color="white"
-          // onClick={onClickDelete}
           onClick={() => removeFromCart(props)}
         />
       </Flex>
@@ -172,13 +108,7 @@ export const CartItem = (props) => {
         >
           Eliminar
         </Button>
-        {/* <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value);
-          }}
-        /> */}
-        {/* <PriceTag price={price} currency={currency} /> */}
+
         <HStack spacing="1">
           <Text as="span" fontWeight="medium" color="gray.400" textDecoration={'none'}>
             {formatPrice(price)}
