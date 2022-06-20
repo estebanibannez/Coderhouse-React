@@ -1,4 +1,4 @@
-# Proyecto Coder React
+# Proyecto Coder React ecommerce rey pato
 
 ## Table of Contents 🚀
 
@@ -25,3 +25,4 @@ yarn dev
         />
     </a>
 </div>
+
