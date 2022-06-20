@@ -181,7 +181,7 @@ const products = [
 export const getProducts = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve(products);
-  }, 2000);
+  }, 1000);
 });
 
 export const getProductsBycategoryId = (categoryId) => {
@@ -190,7 +190,7 @@ export const getProductsBycategoryId = (categoryId) => {
       const productsFilters = products.filter((product) => product.categoryId === categoryId);
 
       resolve(productsFilters);
-    }, 2000);
+    }, 1000);
   });
 };
 
@@ -199,6 +199,6 @@ export const getItem = (id) => {
     setTimeout(() => {
       const productById = products.find((p) => p.id === id);
       resolve(productById);
-    }, 2000);
+    }, 1000);
   });
 };
