@@ -45,17 +45,20 @@ const products = [
   },
   {
     id: 4,
-    title: 'Aquack Man',
-    description: 'Figura coleccionable Liga de la justicia',
-    previusPrice: 18000,
-    price: 15000,
-    pictureUrl: 'https://m.media-amazon.com/images/I/7190m2QYxnL._AC_SX679_.jpg',
-    pictureUrl1: 'https://www.paturros.es/wp-content/uploads/2021/02/tubbz-aquaman.jpg',
-    pictureUrl2: 'https://www.paturros.es/wp-content/uploads/2021/02/pato-goma-aquaman.jpg',
+    title: 'Doctor Strange Diorama',
+    description: 'Doctor Strange Diamond Gallery Diorama en el Multiverso de la Locura',
+    previusPrice: 65000,
+    price: 60000,
+    pictureUrl:
+      'https://cdn11.bigcommerce.com/s-csqcv5l47s/images/stencil/1280x1280/products/2007/4389/DoctorStrange2_Gallery_4-min__02401.1654190381.jpg?c=1?imbypass=on',
+    pictureUrl1:
+      'https://cdn11.bigcommerce.com/s-csqcv5l47s/images/stencil/1280x1280/products/2007/4389/DoctorStrange2_Gallery_4-min__02401.1654190381.jpg?c=1?imbypass=on',
+    pictureUrl2:
+      'https://cdn11.bigcommerce.com/s-csqcv5l47s/images/stencil/1280x1280/products/2007/4391/DoctorStrange2_Gallery_3-min__80464.1654190381.jpg?c=1?imbypass=on',
     pictureUrl3:
-      'https://www.paturros.es/wp-content/uploads/2021/02/comprar-patito-goma-aquaman-300x300.jpg',
-    categoryId: 'heroes',
-    stock: 8,
+      'https://cdn11.bigcommerce.com/s-csqcv5l47s/images/stencil/1280x1280/products/2007/4393/DoctorStrange2_Gallery_5-min__93527.1654190381.jpg?c=1?imbypass=on',
+    categoryId: 'diaromas',
+    stock: 2,
   },
   {
     id: 5,
@@ -136,14 +139,17 @@ const products = [
   },
   {
     id: 10,
-    title: 'Chucky',
-    description: 'Figura coleccionable Chucky',
-    previusPrice: 13000,
-    price: 10000,
-    pictureUrl:
-      'https://cdn11.bigcommerce.com/s-nf2x4/images/stencil/1280x1280/products/2087/18632/Chucky-Horror-TUBBZ-1__79441.1646446074.jpg?c=2',
-    categoryId: 'diaromas',
-    stock: 2,
+    title: 'Aquack Man',
+    description: 'Figura coleccionable Liga de la justicia',
+    previusPrice: 18000,
+    price: 15000,
+    pictureUrl: 'https://m.media-amazon.com/images/I/7190m2QYxnL._AC_SX679_.jpg',
+    pictureUrl1: 'https://www.paturros.es/wp-content/uploads/2021/02/tubbz-aquaman.jpg',
+    pictureUrl2: 'https://www.paturros.es/wp-content/uploads/2021/02/pato-goma-aquaman.jpg',
+    pictureUrl3:
+      'https://www.paturros.es/wp-content/uploads/2021/02/comprar-patito-goma-aquaman-300x300.jpg',
+    categoryId: 'heroes',
+    stock: 8,
   },
   {
     id: 11,
