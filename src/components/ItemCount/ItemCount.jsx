@@ -12,18 +12,8 @@ import {
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsPinAngle } from 'react-icons/bs';
-import { useRef } from 'react';
 
 const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
-  const toast = useToast();
-  const toastIdRef = useRef();
-
-  // const addToProduct = () => {
-  //   // if (evaluateStock()) {
-  //   onAdd();
-  //   // }
-  // };
-
   const handleOnChange = (e) => {
     setCant(parseInt(e.target.value, 10));
   };
@@ -35,33 +25,6 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
   const handleDecrement = () => {
     if (cant > 0) setCant((prevCount) => prevCount - 1);
   };
-
-  // const evaluateStock = () => {
-  //   debugger;
-  //   if (cant > stock) {
-  //     toastIdRef.current = toast({
-  //       title: 'Sin Stock',
-  //       description: 'No tenemos Stock suficiente para esa cantidad',
-  //       status: 'warning',
-  //       position: 'top-center',
-  //       duration: 2000,
-  //       isClosable: true,
-  //     });
-  //     return false;
-  //   } else if (cant <= 0) {
-  //     toastIdRef.current = toast({
-  //       title: 'Seleccione una cantidad',
-  //       description: 'Es necesario seleccionar una cantidad para agregar al carro',
-  //       status: 'warning',
-  //       position: 'top-center',
-  //       duration: 2000,
-  //       isClosable: true,
-  //     });
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // };
 
   return (
     <>
@@ -78,7 +41,7 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
             onClick={() => {
               onAdd();
             }}
-            colorScheme="pink"
+            colorScheme="purple"
             variant="solid"
             size={'sm'}
           >
@@ -97,6 +60,7 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
             size={'sm'}
             fontWeight={700}
             textAlign={'center'}
+            bgColor={'white'}
             textColor="black"
           />
 

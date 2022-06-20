@@ -15,26 +15,24 @@ export default function ItemListContainer() {
   };
 
   useEffect(() => {
-    //se ejecuta solo si no tiene una categoria seleccionada
     if (!id) {
+      //obtiene la totalidad de los productos
       getProducts.then((response) => {
         setData(response);
         setLoading(false);
       });
+    } else {
+      //se ejecuta solo si no tiene una categoria seleccionada
+      getProductsBycategoryId(id).then((response) => {
+        setData(response);
+        setLoading(false);
+      });
     }
-  }, [useData]);
-
-  useEffect(() => {
-    //se ejecuta cuando tiene una categoria seleccionada
-    getProductsBycategoryId(id).then((response) => {
-      setData(response);
-      setLoading(false);
-    });
-  }, [id]);
+  }, [useData, id]);
 
   return (
     <>
-      <Box ml={10} mr={10}>
+      <Box ml={20} mr={20}>
         <SimpleGrid columns={[1, 2, 3, 4]}>
           <ItemList items={useData} onAdd={onAdd} />
         </SimpleGrid>

@@ -94,6 +94,14 @@ const useInitialState = () => {
       });
       return false;
     } else {
+      toastIdRef.current = toast({
+        title: 'Wii ! Producto añadido al carro!',
+        description: '',
+        status: 'success',
+        position: 'top-center',
+        duration: 2000,
+        isClosable: true,
+      });
       return true;
     }
   };

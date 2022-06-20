@@ -101,7 +101,7 @@ export default function NavBar() {
 const DesktopNav = () => {
   const linkColor = useColorModeValue('white', 'white');
   const linkHoverColor = useColorModeValue('gray', 'white');
-  const popoverContentBgColor = useColorModeValue('white', 'white');
+  const popoverContentBgColor = useColorModeValue('gray.600', 'gray.700');
 
   return (
     <Stack direction={'row'} spacing={2}>
@@ -159,7 +159,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
     >
       <Stack direction={'row'} align={'center'}>
         <Box>
-          <Text transition={'all .3s ease'} _groupHover={{ color: 'white' }} fontWeight={500}>
+          <Text transition={'all .3s ease'} _groupHover={{ color: 'gray.500' }} fontWeight={500}>
             {label}
           </Text>
           <Text fontSize={'sm'}>{subLabel}</Text>
@@ -205,7 +205,7 @@ const MobileNavItem = ({ label, children, href }) => {
           textDecoration: 'none',
         }}
       >
-        <Text fontWeight={600} color={useColorModeValue('white', 'gray.500')}>
+        <Text fontWeight={600} color={useColorModeValue('gray.500', 'gray.500')}>
           {label}
         </Text>
         {children && (
@@ -261,9 +261,9 @@ const NAV_ITEMS = [
         href: '/categoria/villanos',
       },
       {
-        label: 'Otros',
+        label: 'Diaromas',
         subLabel: '',
-        href: '/categoria/otros',
+        href: '/categoria/diaromas',
       },
     ],
   },

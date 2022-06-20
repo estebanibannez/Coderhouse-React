@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Flex, Box, Image, Badge, useColorModeValue, Text, Icon } from '@chakra-ui/react';
 import { BsFillArrowDownRightSquareFill } from 'react-icons/bs';
+import CartContext from './../Context/CartContext';
+import { useContext } from 'react';
 
 const Item = ({ item, onAdd }) => {
   const { id, title, price, previusPrice, description, pictureUrl } = item;
+  const { formatPrice } = useContext(CartContext);
 
   return (
     <Box
@@ -14,7 +17,17 @@ const Item = ({ item, onAdd }) => {
       shadow="lg"
       position="relative"
     >
-      <Image src={pictureUrl} alt={`Picture of ${pictureUrl}`} roundedTop="lg" />
+      <Link to={'/item/' + id} display={'flex'}>
+        <Image
+          src={pictureUrl}
+          alt={`Picture of ${pictureUrl}`}
+          minWidth={'100%'}
+          objectFit="cover"
+          boxSize="400px"
+          position="relative"
+          roundedTop="lg"
+        />{' '}
+      </Link>
 
       <Box p="6">
         <Box d="flex" alignItems="baseline">
@@ -38,11 +51,11 @@ const Item = ({ item, onAdd }) => {
 
           <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
             <Box as="span" color={'gray.600'} fontSize="sm" m={2}>
-              <Text as="s">$ {previusPrice}</Text>
+              <Text as="s"> {formatPrice(previusPrice)}</Text>
             </Box>
 
             <Box as="span" color={'pink.500'} fontSize="3xl" fontWeight={'bold'}>
-              ${price}
+              {formatPrice(price)}
             </Box>
 
             <Box d="flex" alignItems="center">

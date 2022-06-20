@@ -62,13 +62,31 @@ const ItemDetail = ({ item }) => {
         >
           <Stack direction="row" m={1}>
             <Skeleton isLoaded={!loading} boxSize="200px">
-              <Image rounded={'sm'} boxSize="200px" objectFit="cover" src={pictureUrl1} />
+              <Image
+                rounded={'sm'}
+                boxSize="200px"
+                objectFit="cover"
+                objectPosition={'top'}
+                src={pictureUrl1}
+              />
             </Skeleton>
             <Skeleton isLoaded={!loading} boxSize="200px">
-              <Image rounded={'sm'} boxSize="200px" objectFit="cover" src={pictureUrl2} />
+              <Image
+                rounded={'sm'}
+                boxSize="200px"
+                objectFit="cover"
+                objectPosition={'top'}
+                src={pictureUrl2}
+              />
             </Skeleton>
             <Skeleton isLoaded={!loading} boxSize="200px">
-              <Image rounded={'sm'} boxSize="200px" objectFit="cover" src={pictureUrl3} />
+              <Image
+                rounded={'sm'}
+                boxSize="200px"
+                objectFit="cover"
+                objectPosition={'top'}
+                src={pictureUrl3}
+              />
             </Skeleton>
           </Stack>
 
@@ -83,7 +101,14 @@ const ItemDetail = ({ item }) => {
             ></Circle>
 
             <Skeleton isLoaded={!loading} p={2}>
-              <Image rounded={'lg'} boxSize="sm" objectFit="cover" src={pictureUrl} />
+              <Image
+                rounded={'lg'}
+                boxSize="sm"
+                objectFit="cover"
+                // w="full"
+                h="auto"
+                src={pictureUrl}
+              />
             </Skeleton>
 
             <SkeletonText isLoaded={!loading} mt="4" noOfLines={4} spacing="4" />

@@ -7,6 +7,7 @@ import {
   Stack,
   Flex,
   Button,
+  Image,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -46,6 +47,14 @@ export const Cart = () => {
                     bgGradient="linear(to-r, teal.400, teal.600)"
                     backgroundClip="text"
                   >
+                    <Image
+                      rounded={'lg'}
+                      boxSize="sm"
+                      objectFit="cover"
+                      // w="full"
+                      h="auto"
+                      src={window.location.origin + '/cart-empty.png'}
+                    />
                     UPS!
                   </Heading>
                   <Text fontSize="18px" mt={3} color="white" mb={2}>
