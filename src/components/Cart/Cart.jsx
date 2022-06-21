@@ -21,6 +21,7 @@ export const Cart = () => {
   const {
     state: { cart },
     emptyCart,
+    getItemQty,
   } = useContext(CartContext);
 
   return (
@@ -78,7 +79,7 @@ export const Cart = () => {
             ) : (
               <>
                 <Heading fontSize="2xl" fontWeight="extrabold" color={'gray.400'}>
-                  Carrito ({cart.length} items)
+                  Carrito ({getItemQty()} items)
                 </Heading>
 
                 {cart.map((item, i) => (

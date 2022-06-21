@@ -10,6 +10,7 @@ import {
   Button,
   CloseButton,
   // Link,
+  Badge,
   Input,
 } from '@chakra-ui/react';
 
@@ -58,35 +59,38 @@ export const CartItem = (props) => {
 
       {/* Desktop */}
       <Flex
-        width="full"
+        // width=""
         justify="space-between"
         display={{
           base: 'none',
           md: 'flex',
         }}
       >
-        <Stack direction="row" w="30%">
+        <HStack spacing="8">
+          <Text as="span" fontWeight="medium" color="gray.400" textDecoration={'none'}>
+            Cantidad
+          </Text>
           <Input
             name="cant"
             value={quantity}
             // onChange={handleOnChange}
             size={'sm'}
             fontWeight={700}
+            maxW={'100%'}
             textAlign={'center'}
             textColor="white"
             readOnly={true}
           />
-        </Stack>
-        <HStack spacing="1">
-          <Text as="span" fontWeight="medium" color="gray.400" textDecoration={'none'}>
+          <Text as="span" fontWeight="medium" color="pink.400" textDecoration={'none'}>
             {formatPrice(price)}
           </Text>
+
+          <CloseButton
+            aria-label={`Delete ${title} from cart`}
+            color="white"
+            onClick={() => removeFromCart(props)}
+          />
         </HStack>
-        <CloseButton
-          aria-label={`Delete ${title} from cart`}
-          color="white"
-          onClick={() => removeFromCart(props)}
-        />
       </Flex>
 
       {/* Mobile */}
@@ -109,7 +113,10 @@ export const CartItem = (props) => {
           Eliminar
         </Button>
 
-        <HStack spacing="1">
+        <HStack spacing="6">
+          <Text as="span" fontWeight="medium" color="gray.400" textDecoration={'none'}>
+            Cantidad: <Badge> {quantity}</Badge>
+          </Text>
           <Text as="span" fontWeight="medium" color="gray.400" textDecoration={'none'}>
             {formatPrice(price)}
           </Text>
