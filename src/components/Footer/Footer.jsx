@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
       <Stack
-        bgGradient="linear(to-l,#28313B,#28313B)"
+        bgGradient="linear(to-l,#190022,#020024)"
         py={{
           base: '12',
           md: '5',

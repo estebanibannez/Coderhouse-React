@@ -11,7 +11,7 @@ const products = [
       'https://images-na.ssl-images-amazon.com/images/I/51lEneKemmL.__AC_SX300_SY300_QL70_ML2_.jpg',
     pictureUrl3:
       'https://lafrikileria.com/40639-thickbox_default/patito-de-goma-batman-dc-comics.jpg',
-    categoryId: 'heroes',
+    categoryId: 'patos',
     stock: 5,
   },
   {
@@ -25,7 +25,7 @@ const products = [
     pictureUrl2: 'https://www.paturros.es/wp-content/uploads/2021/08/pato-goma-batman.jpg',
     pictureUrl3:
       'https://www.paturros.es/wp-content/uploads/2021/08/patito-goma-batman-300x300.jpg',
-    categoryId: 'heroes',
+    categoryId: 'patos',
     stock: 6,
   },
   {
@@ -40,7 +40,7 @@ const products = [
       'https://www.paturros.es/wp-content/uploads/2021/01/pato-goma-marty-mcfly-300x300.jpg',
     pictureUrl3:
       'https://www.paturros.es/wp-content/uploads/2021/01/patito-goma-marty-mcfly-300x300.jpg',
-    categoryId: 'otros',
+    categoryId: 'patos',
     stock: 6,
   },
   {
@@ -74,7 +74,7 @@ const products = [
       'https://cdn11.bigcommerce.com/s-csqcv5l47s/images/stencil/1280x1280/products/1709/3577/MILES_GALLERY_7__03651.1633719949.jpg?c=1?imbypass=on',
     pictureUrl3:
       'https://cdn11.bigcommerce.com/s-csqcv5l47s/images/stencil/1280x1280/products/1709/3574/MILES_GALLERY_9__20799.1633719949.jpg?c=1?imbypass=on',
-    categoryId: 'otros',
+    categoryId: 'diaromas',
     stock: 3,
   },
   {
@@ -89,7 +89,7 @@ const products = [
     pictureUrl2: 'https://i.ebayimg.com/images/g/GgQAAOSwx0diA9Vh/s-l500.jpg',
     pictureUrl3:
       'https://cdn11.bigcommerce.com/s-csqcv5l47s/images/stencil/1280x1280/products/1607/2714/MarvelGalleryVision__32970.1641933212.JPG?c=1?imbypass=on',
-    categoryId: 'otros',
+    categoryId: 'diaromas',
     stock: 4,
   },
   {
@@ -100,7 +100,7 @@ const products = [
     price: 13000,
     pictureUrl:
       'https://cdn11.bigcommerce.com/s-nf2x4/images/stencil/1280x1280/products/2128/19126/peacemaker-suicide-squad-tubbz-wb-3_800x.progressive.jpg__59495.1648838242.jpg?c=2',
-    categoryId: 'heroes',
+    categoryId: 'patos',
     stock: 5,
   },
   {
@@ -148,7 +148,7 @@ const products = [
     pictureUrl2: 'https://www.paturros.es/wp-content/uploads/2021/02/pato-goma-aquaman.jpg',
     pictureUrl3:
       'https://www.paturros.es/wp-content/uploads/2021/02/comprar-patito-goma-aquaman-300x300.jpg',
-    categoryId: 'heroes',
+    categoryId: 'patos',
     stock: 8,
   },
   {
@@ -173,7 +173,7 @@ const products = [
     price: 12000,
     pictureUrl:
       'https://cdn11.bigcommerce.com/s-nf2x4/images/stencil/1280x1280/products/1690/15349/Tubbz-DC-Robin-NS-01__88329.1626875986.jpg?c=2',
-    categoryId: 'heroes',
+    categoryId: 'patos',
     stock: 10,
   },
 ];

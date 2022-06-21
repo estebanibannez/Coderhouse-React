@@ -6,7 +6,9 @@ const Layout = ({ children }) => {
       maxW="container.3xl"
       pb={10}
       p={0}
-      bgGradient="linear(to-l,#28313B,#28313B)"
+      fit="cover"
+      bgImage="linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url('../background.jpg')"
+      // bgGradient="linear(to-l,#28313B,#28313B)"
     >
       {children}
     </Container>

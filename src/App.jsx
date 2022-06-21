@@ -24,10 +24,7 @@ function App() {
               path="contacto"
               element={
                 <>
-                  <Container p={10}>
-                    {' '}
-                    <Heading color={'white'}>En construcción</Heading>
-                  </Container>
+                  <Error404 />
                 </>
               }
             />

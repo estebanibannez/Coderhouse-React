@@ -28,8 +28,8 @@ export default function NavBar() {
   return (
     <Box>
       <Flex
-        bgGradient="linear(to-l,#28313B,#28313B)"
-        color={useColorModeValue('gray.500', 'white')}
+        bgGradient="linear(to-l,#190022,#220134)"
+        color={useColorModeValue('pink.500', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -99,9 +99,9 @@ export default function NavBar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('gray.500', 'purple.300');
-  const linkHoverColor = useColorModeValue('gray', 'white');
-  const popoverContentBgColor = useColorModeValue('gray.600', 'gray.700');
+  const linkColor = useColorModeValue('white', 'purple.300');
+  const linkHoverColor = useColorModeValue('pink.700', 'white');
+  const popoverContentBgColor = useColorModeValue('#190022', 'pink.700');
 
   return (
     <Stack direction={'row'} align={'center'} spacing={2}>
@@ -155,11 +155,11 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('#28313B', 'white') }}
+      _hover={{ bg: useColorModeValue('gray.700', 'white') }}
     >
       <Stack direction={'row'} align={'center'}>
         <Box>
-          <Text transition={'all .3s ease'} _groupHover={{ color: 'gray.500' }} fontWeight={500}>
+          <Text transition={'all .3s ease'} _groupHover={{ color: 'white' }} fontWeight={500}>
             {label}
           </Text>
           <Text fontSize={'sm'}>{subLabel}</Text>
@@ -182,7 +182,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={useColorModeValue('#28313B', 'white')} p={4} display={{ md: 'none' }}>
+    <Stack bgGradient="linear(to-l,#190022,#020024)" p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -205,7 +205,7 @@ const MobileNavItem = ({ label, children, href }) => {
           textDecoration: 'none',
         }}
       >
-        <Text fontWeight={600} color={useColorModeValue('gray.500', 'gray.500')}>
+        <Text fontWeight={600} color={useColorModeValue('white', 'pink.500')}>
           {label}
         </Text>
         {children && (
@@ -213,6 +213,7 @@ const MobileNavItem = ({ label, children, href }) => {
             as={ChevronDownIcon}
             transition={'all .25s ease-in-out'}
             transform={isOpen ? 'rotate(180deg)' : ''}
+            color={'white'}
             w={6}
             h={6}
           />
@@ -225,8 +226,8 @@ const MobileNavItem = ({ label, children, href }) => {
           pl={4}
           borderLeft={1}
           borderStyle={'solid'}
-          borderColor={useColorModeValue('pink.500', 'gray.500')}
-          color="gray.500"
+          borderColor={useColorModeValue('pink.500', 'white')}
+          color="pink.500"
           fontWeight={500}
           align={'start'}
         >
@@ -251,20 +252,20 @@ const NAV_ITEMS = [
     label: 'Categorias',
     children: [
       {
-        label: 'Superheroes',
+        label: 'Patos',
         subLabel: '',
-        href: '/categoria/heroes',
-      },
-      {
-        label: 'Villanos',
-        subLabel: '',
-        href: '/categoria/villanos',
+        href: '/categoria/patos',
       },
       {
         label: 'Diaromas',
         subLabel: '',
         href: '/categoria/diaromas',
       },
+      // {
+      //   label: 'Otros',
+      //   subLabel: '',
+      //   href: '/categoria/otros',
+      // },
     ],
   },
   {
