@@ -4,7 +4,7 @@ import NavBar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ItemListContainer from './components/List/ItemListContainer';
 import ItemDetailContainer from './components/List/ItemDetailContainer';
-import { Flex, VStack, Heading, Container } from '@chakra-ui/react';
+import { VStack, Stack, Text, useBreakpointValue, Image } from '@chakra-ui/react';
 import Error404 from './components/Error404/Error404';
 import { Cart } from './components/Cart/Cart';
 import CartContext from './components/Context/CartContext';
@@ -44,24 +44,25 @@ function App() {
               exact
               element={
                 <>
-                  <Flex
+                  <VStack
                     w={'full'}
-                    h={{ base: '500px', lg: '12rem', xl: '12rem' }}
-                    backgroundImage={{
-                      base: '/banner.png',
-                      lg: '/banner.png',
-                    }}
-                    backgroundSize="cover"
-                    backgroundPosition="right center"
+                    justify={'center'}
+                    px={useBreakpointValue({ base: 4, md: 8 })}
+                    bgGradient={'linear(to-r, blackAlpha.600, transparent)'}
                   >
-                    <VStack
-                      w={'full'}
-                      justify={'center'}
-                      px={{ base: 4, md: 8, xl: 16 }}
-                      bgGradient={`linear(to-r, blackAlpha.300", transparent)`}
-                      alignItems={'flex-start'}
-                    ></VStack>
-                  </Flex>
+                    <Stack maxW={'2xl'} align={'flex-start'} maxH={'auto'} spacing={2}>
+                      <Image src={window.location.origin + '/bannerlogo.png'} alt="Dan Abramov" />
+                      <Text
+                        color={'white'}
+                        fontWeight={700}
+                        lineHeight={1.2}
+                        fontSize={useBreakpointValue({ base: '2xl', md: '2xl' })}
+                      >
+                        {/* Nuevos productos */}
+                      </Text>
+                    </Stack>
+                  </VStack>
+
                   <ItemListContainer />
                 </>
               }
