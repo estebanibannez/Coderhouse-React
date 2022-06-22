@@ -17,6 +17,7 @@ import {
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import CardWidget from '../CardWidget/CardWidget';
 import CartContext from '../Context/CartContext';
+import { Link as RouteLink } from 'react-router-dom';
 import { useContext } from 'react';
 
 export default function NavBar() {
@@ -109,19 +110,22 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? '#'}
-                fontSize={'lg'}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Link>
+              <RouteLink to={navItem.href ?? '#'}>
+                <Text
+                  p={2}
+                  // to={navItem.href ?? '#'}
+                  // href={navItem.href ?? '#'}
+                  fontSize={'lg'}
+                  fontWeight={500}
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: 'none',
+                    color: linkHoverColor,
+                  }}
+                >
+                  {navItem.label}
+                </Text>
+              </RouteLink>
             </PopoverTrigger>
 
             {navItem.children && (
