@@ -1,3 +1,4 @@
+import { useState, useEffect, useContext } from 'react';
 import {
   Box,
   Text,
@@ -7,12 +8,20 @@ import {
   Flex,
   Badge,
   Icon,
-  Circle,
   Stack,
   Button,
+  Skeleton,
+  SkeletonText,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  Lorem,
 } from '@chakra-ui/react';
-import { useState, useEffect, useContext } from 'react';
-import { Skeleton, SkeletonText } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsFillArrowDownLeftCircleFill } from 'react-icons/bs';
 import { FiCheck } from 'react-icons/fi';
@@ -22,7 +31,15 @@ import CartContext from '../Context/CartContext';
 const ItemDetail = ({ item }) => {
   const [loading, setLoading] = useState(true);
   const [cant, setCant] = useState(0);
-  const { addToCart, isInCart, formatPrice } = useContext(CartContext);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [image, setImage] = useState('');
+
+  const { addToCart, formatPrice } = useContext(CartContext);
+
+  const handleSizeClick = (newSize) => {
+    setImage(newSize);
+    onOpen();
+  };
 
   const {
     title,
@@ -72,6 +89,7 @@ const ItemDetail = ({ item }) => {
                 height={{ md: 40 }}
                 m={4}
                 src={pictureUrl1}
+                onClick={() => handleSizeClick(pictureUrl1)}
               />
             </Skeleton>
             <Skeleton isLoaded={!loading}>
@@ -82,6 +100,7 @@ const ItemDetail = ({ item }) => {
                 height={{ md: 40 }}
                 m={4}
                 src={pictureUrl2}
+                onClick={() => handleSizeClick(pictureUrl2)}
               />
             </Skeleton>
             <Skeleton isLoaded={!loading}>
@@ -92,6 +111,7 @@ const ItemDetail = ({ item }) => {
                 height={{ md: 40 }}
                 m={4}
                 src={pictureUrl3}
+                onClick={() => handleSizeClick(pictureUrl3)}
               />
             </Skeleton>
           </Stack>
@@ -184,6 +204,23 @@ const ItemDetail = ({ item }) => {
             <SkeletonText isLoaded={!loading} m={2} />
           </Box>
         </Box>
+
+        <Modal isCentered onClose={onClose} size="xl" isOpen={isOpen}>
+          <ModalOverlay />
+          <ModalContent>
+            {/* <ModalHeader>Modal Title</ModalHeader> */}
+            <ModalCloseButton />
+            <ModalBody p={2}>
+              <Image
+                rounded="lg"
+                boxSize="lg"
+                // width={{ md: 40, base: 20 }}
+                height={{ base: 'full' }}
+                src={image}
+              />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </Container>
     </>
   );
