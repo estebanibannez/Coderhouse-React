@@ -1,28 +1,43 @@
-# Proyecto Coder React ecommerce rey pato
+
+<div align="center">
+    <a href="https://es.reactjs.org" target="_blank">
+        <img
+          src="https://raw.githubusercontent.com/estebanibannez/Coderhouse-React/master/public/bannerlogo.png"
+          alt="react"
+          width="auto"
+          height="180px"
+        />
+    </a>
+</div>
+
+# Curso React Coderhouse
+## Proyecto Ecommerce rey pato
 
 ## Table of Contents 🚀
 
 Contenido.
 
 - [Installation](#installation)
-- [Usage](#usage)
+- [Deploy](#Despliegue)
+## About
+
+Proyecto frontend basado en react realizado en la Comisión 31205 de coderhouse, cuya finalidad fue realizar un ecommerce funcional con carro de compra conectado a firebase.
+
+## Libs and Frameworks
+
+- Chakra ui
+- React router dom
+- Firebase
 
 ## Installation ⚙️
 
-yarn
+`$ yarn`
 
 ## Despliegue 📦
+`$ yarn dev`
 
-yarn dev
 
-<div align="center">
-    <a href="https://es.reactjs.org" target="_blank">
-        <img
-          src="https://iconape.com/wp-content/files/tx/353401/png/react-logo.png"
-          alt="react"
-          width="60"
-          height="55"
-        />
-    </a>
-</div>
+👉 Link [Production](https://reypato.vercel.app "Production") 👈
+
+
 
