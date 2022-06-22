@@ -3,12 +3,12 @@ import { Box, Heading, Text, Button, Image } from '@chakra-ui/react';
 
 export default function Error404() {
   return (
-    <Box textAlign="center" py={5} px={5}>
+    <Box textAlign="center" py={5} px={9}>
       <Heading
         display="inline-block"
         as="h2"
         size="2xl"
-        bgGradient="linear(to-r, teal.400, teal.600)"
+        bgGradient="linear(to-r, pink.400, purple.600)"
         backgroundClip="text"
         p={4}
       >
@@ -18,17 +18,17 @@ export default function Error404() {
           objectFit="cover"
           w="full"
           h="auto"
-          src={window.location.origin + '/notfound.png'}
+          src={window.location.origin + '/notfound.gif'}
         />
         Ups ! Pagina no encontrada
       </Heading>
-      <Text color={'gray.500'} mb={6}>
+      <Text color={'purple.500'} mb={6}>
         La pagina que intentas acceder no existe.
       </Text>
       <Link to={'/'} display={'flex'}>
         <Button
           colorScheme="teal"
-          bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
+          bgGradient="linear(to-r, pink.400, pink.500, purple.600)"
           color="white"
           variant="solid"
         >
