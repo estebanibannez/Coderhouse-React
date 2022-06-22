@@ -13,9 +13,9 @@ const CardWidget = ({ cartAmount }) => {
       <Link to={'/cart'}>
         <Flex mr="10">
           <Box flex="1" p={2}>
-            <Badge colorScheme="purple">
+            {/* <Badge colorScheme="purple">
               <Heading size="sm">Mi carro</Heading>
-            </Badge>
+            </Badge> */}
           </Box>
           <BsCart3 size={40} color="pink" m={2} />
 

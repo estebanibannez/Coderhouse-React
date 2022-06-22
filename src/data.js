@@ -34,8 +34,8 @@ const products = [
     description: 'Figura coleccionable Back to The Future',
     previusPrice: 16000,
     price: 13000,
-    pictureUrl: 'https://m.media-amazon.com/images/I/614IsaGCWGL._AC_SX679_.jpg',
-    pictureUrl1: 'https://www.paturros.es/wp-content/uploads/2021/01/tubbz-marty-mcfly-300x300.jpg',
+    pictureUrl: 'https://www.paturros.es/wp-content/uploads/2021/01/tubbz-marty-mcfly-300x300.jpg',
+    pictureUrl1: 'https://m.media-amazon.com/images/I/614IsaGCWGL._AC_SX679_.jpg',
     pictureUrl2:
       'https://www.paturros.es/wp-content/uploads/2021/01/pato-goma-marty-mcfly-300x300.jpg',
     pictureUrl3:

@@ -46,13 +46,15 @@ const ItemDetail = ({ item }) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 700);
   }, [item]);
 
   return (
     <>
-      <Container maxW={'container.md'} pt={2}>
-        <Stack
+      <Container maxW={'container.md'} pt={6} pb={10}>
+        <Box
+          p={2}
+          display={{ md: 'flex' }}
           bg={useColorModeValue('white', 'gray.800')}
           borderWidth="1px"
           rounded="lg"
@@ -60,66 +62,67 @@ const ItemDetail = ({ item }) => {
           maxW="100%"
           position="relative"
         >
-          <Stack direction="row" m={1}>
-            <Skeleton isLoaded={!loading} boxSize="200px">
+          <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}></Box>
+          <Stack direction={{ base: 'row', md: 'column' }}>
+            <Skeleton isLoaded={!loading}>
               <Image
-                rounded={'sm'}
-                boxSize="200px"
-                objectFit="cover"
-                objectPosition={'top'}
+                rounded="lg"
+                boxSize="sm"
+                width={{ md: 40, base: 20 }}
+                height={{ md: 40 }}
+                m={4}
                 src={pictureUrl1}
               />
             </Skeleton>
-            <Skeleton isLoaded={!loading} boxSize="200px">
+            <Skeleton isLoaded={!loading}>
               <Image
-                rounded={'sm'}
-                boxSize="200px"
-                objectFit="cover"
-                objectPosition={'top'}
+                rounded="lg"
+                boxSize="sm"
+                width={{ md: 40, base: 20 }}
+                height={{ md: 40 }}
+                m={4}
                 src={pictureUrl2}
               />
             </Skeleton>
-            <Skeleton isLoaded={!loading} boxSize="200px">
+            <Skeleton isLoaded={!loading}>
               <Image
-                rounded={'sm'}
-                boxSize="200px"
-                objectFit="cover"
-                objectPosition={'top'}
+                rounded="lg"
+                boxSize="sm"
+                width={{ md: 40, base: 20 }}
+                height={{ md: 40 }}
+                m={4}
                 src={pictureUrl3}
               />
             </Skeleton>
           </Stack>
 
-          <Box direction="row" mr={2}>
-            <Circle
-              size="10px"
-              position="absolute"
-              top={2}
-              right={2}
-              bg="red.300"
-              color="white"
-            ></Circle>
-
-            <Skeleton isLoaded={!loading} boxSize="auto" m={2}>
+          <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+            <Skeleton isLoaded={!loading}>
               <Image
-                rounded={'lg'}
+                rounded="lg"
                 boxSize="sm"
-                objectFit="cover"
-                // w="full"
-                h="auto"
+                width={{ md: 80, base: 80 }}
+                height={{ md: 80 }}
                 src={pictureUrl}
               />
             </Skeleton>
 
-            <SkeletonText isLoaded={!loading} mt="4" noOfLines={4} spacing="4" m={2} />
-            {!loading && (
-              <Box p="6">
-                <Box d="flex" alignItems="baseline">
-                  <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
-                    Oferta
-                  </Badge>
-                </Box>
+            <Text
+              mt={2}
+              fontWeight="bold"
+              textTransform="uppercase"
+              fontSize="sm"
+              letterSpacing="wide"
+              color="teal.600"
+            >
+              <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
+                Oferta
+              </Badge>
+            </Text>
 
+            <SkeletonText isLoaded={!loading} m={2} />
+            {!loading && (
+              <Box d="flex">
                 <Flex mt="1" justifyContent="space-between" alignContent="center">
                   <Box fontSize="2xl" fontWeight="semibold" as="h4" lineHeight="tight">
                     {title}
@@ -131,7 +134,6 @@ const ItemDetail = ({ item }) => {
                   </Box>
                 </Flex>
 
-                {/* <Box d="flex" justifyContent="space-between" alignContent="center"> */}
                 <Box fontSize="2xl" color={'white'}>
                   <Box as="span" color={'gray.600'} fontSize="sm" m={2}>
                     <Text as="s">{formatPrice(previusPrice)}</Text>
@@ -142,7 +144,6 @@ const ItemDetail = ({ item }) => {
                   </Box>
 
                   <Box d="flex" alignItems="center">
-                    {/* {cart.length <= 0 && ( */}
                     <ItemCount
                       label="Add to cart"
                       stock={stock}
@@ -180,8 +181,9 @@ const ItemDetail = ({ item }) => {
                 </Box>
               </Box>
             )}
+            <SkeletonText isLoaded={!loading} m={2} />
           </Box>
-        </Stack>
+        </Box>
       </Container>
     </>
   );

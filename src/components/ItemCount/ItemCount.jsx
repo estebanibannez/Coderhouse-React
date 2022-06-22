@@ -62,6 +62,7 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
             textAlign={'center'}
             bgColor={'white'}
             textColor="black"
+            readOnly={true}
           />
 
           <Button colorScheme="pink" size={'sm'} onClick={handleIncrement}>
