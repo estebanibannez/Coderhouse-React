@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { Text, Stack, IconButton, ButtonGroup } from '@chakra-ui/react';
 
 const Footer = () => {
@@ -21,21 +21,21 @@ const Footer = () => {
           <ButtonGroup variant="ghost">
             <IconButton
               as="a"
-              href="#"
+              href="https://www.linkedin.com/in/esteban-ibañez-3354ba6a/"
               aria-label="LinkedIn"
               icon={<FaLinkedin fontSize="1.25rem" />}
             />
             <IconButton
               as="a"
-              href="#"
+              href="https://github.com/estebanibannez/Coderhouse-React"
               aria-label="GitHub"
               icon={<FaGithub fontSize="1.25rem" />}
             />
             <IconButton
               as="a"
-              href="#"
+              href="https://www.instagram.com/estebanibanezp/"
               aria-label="Twitter"
-              icon={<FaTwitter fontSize="1.25rem" />}
+              icon={<FaInstagram fontSize="1.25rem" />}
             />
           </ButtonGroup>
         </Stack>
