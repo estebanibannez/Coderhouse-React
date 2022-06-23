@@ -19,7 +19,7 @@ const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
   };
 
   const handleIncrement = () => {
-    if (cant <= stock) setCant((prevCount) => prevCount + 1);
+    if (cant < stock) setCant((prevCount) => prevCount + 1);
   };
 
   const handleDecrement = () => {
