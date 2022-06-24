@@ -62,7 +62,8 @@ const useInitialState = () => {
   };
 
   //formateo de precio de los items del carro
-  const formatPrice = (value, opts = {}) => {
+  const formatPrice = (value = 0, opts = {}) => {
+    debugger;
     const { locale = 'es-CL', currency = 'CLP' } = opts;
     const formatter = new Intl.NumberFormat(locale, {
       currency,
