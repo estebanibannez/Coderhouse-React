@@ -51,14 +51,14 @@ export default function NavBar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Link to="/" href={'/'}>
+          <RouteLink to="/" href={'/'}>
             <Image
               width={140}
               height={'auto'}
               src={window.location.origin + '/logo.png'}
               alt="DonPato"
             />
-          </Link>
+          </RouteLink>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
