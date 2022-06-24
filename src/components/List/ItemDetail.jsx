@@ -28,8 +28,7 @@ import { FiCheck } from 'react-icons/fi';
 import ItemCount from '../ItemCount/ItemCount';
 import CartContext from '../Context/CartContext';
 
-const ItemDetail = ({ item }) => {
-  const [loading, setLoading] = useState(true);
+const ItemDetail = ({ item, loading }) => {
   const [cant, setCant] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [image, setImage] = useState('');
@@ -58,12 +57,6 @@ const ItemDetail = ({ item }) => {
   };
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 700);
-  }, [item]);
 
   return (
     <>
@@ -207,7 +200,6 @@ const ItemDetail = ({ item }) => {
         <Modal isCentered onClose={onClose} size="xl" isOpen={isOpen}>
           <ModalOverlay />
           <ModalContent>
-            {/* <ModalHeader>Modal Title</ModalHeader> */}
             <ModalCloseButton />
             <ModalBody p={2}>
               <Image

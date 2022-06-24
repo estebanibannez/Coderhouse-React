@@ -6,6 +6,7 @@ import ItemDetail from './ItemDetail';
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [useProductById, setProductById] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // getItem(parseInt(id))
@@ -15,14 +16,20 @@ const ItemDetailContainer = () => {
     //   .catch((error) => {
     //     console.log('Ocurrio un error: ' + error);
     //   });
-    
+
     (async () => {
-      const data = await getItem(id);
-      setProductById(data);
+      getItem(id)
+        .then((response) => {
+          setProductById(response);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log('Ocurrio un error: ' + error);
+        });
     })();
   }, [id]);
 
-  return <ItemDetail item={useProductById} />;
+  return <ItemDetail item={useProductById} loading={loading} />;
 };
 
 export default ItemDetailContainer;
