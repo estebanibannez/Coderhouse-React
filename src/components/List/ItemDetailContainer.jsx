@@ -8,13 +8,18 @@ const ItemDetailContainer = () => {
   const [useProductById, setProductById] = useState([]);
 
   useEffect(() => {
-    getItem(parseInt(id))
-      .then((response) => {
-        setProductById(response);
-      })
-      .catch((error) => {
-        console.log('Ocurrio un error: ' + error);
-      });
+    // getItem(parseInt(id))
+    //   .then((response) => {
+    //     setProductById(response);
+    //   })
+    //   .catch((error) => {
+    //     console.log('Ocurrio un error: ' + error);
+    //   });
+    
+    (async () => {
+      const data = await getItem(id);
+      setProductById(data);
+    })();
   }, [id]);
 
   return <ItemDetail item={useProductById} />;

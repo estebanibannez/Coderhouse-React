@@ -17,18 +17,31 @@ export default function ItemListContainer() {
   useEffect(() => {
     if (!id) {
       //obtiene la totalidad de los productos
-      getProducts.then((response) => {
-        setData(response);
+      (async () => {
+        const data = await getProducts();
+        setData(data);
         setLoading(false);
-      });
+      })();
+
+      // getProducts.then((response) => {
+      //   setData(response);
+      //   setLoading(false);
+      // });
     } else {
       //se ejecuta solo si no tiene una categoria seleccionada
-      getProductsBycategoryId(id).then((response) => {
-        setData(response);
+      (async () => {
+        const data = await getProductsBycategoryId(id);
+        debugger;
+        setData(data);
         setLoading(false);
-      });
+      })();
+
+      // getProductsBycategoryId(id).then((response) => {
+      //   setData(response);
+      //   setLoading(false);
+      // });
     }
-  }, [useData, id]);
+  }, [id]);
 
   return (
     <>

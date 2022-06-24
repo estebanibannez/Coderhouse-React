@@ -9,9 +9,13 @@ import Error404 from './components/Error404/Error404';
 import { Cart } from './components/Cart/Cart';
 import CartContext from './components/Context/CartContext';
 import useInitialState from './components/Hooks/useInitialState';
+// Import the functions you need from the SDKs you need
+// import { initializeApp } from './components/Firebase/firebaseConfig';
+// import { getAnalytics } from 'firebase/analytics';
 
 function App() {
   const initialState = useInitialState();
+
   return (
     <CartContext.Provider value={initialState}>
       <BrowserRouter>
