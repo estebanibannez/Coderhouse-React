@@ -36,7 +36,7 @@ const ItemDetail = ({ item }) => {
 
   const { addToCart, formatPrice } = useContext(CartContext);
 
-  const handleSizeClick = (newSize) => {
+  const handleImageClick = (newSize) => {
     setImage(newSize);
     onOpen();
   };
@@ -54,7 +54,6 @@ const ItemDetail = ({ item }) => {
   } = item;
 
   const onAdd = () => {
-    // isInCart(item.id);
     addToCart(item, cant);
   };
 
@@ -89,7 +88,7 @@ const ItemDetail = ({ item }) => {
                 height={{ md: 40 }}
                 m={4}
                 src={pictureUrl1}
-                onClick={() => handleSizeClick(pictureUrl1)}
+                onClick={() => handleImageClick(pictureUrl1)}
               />
             </Skeleton>
             <Skeleton isLoaded={!loading}>
@@ -100,7 +99,7 @@ const ItemDetail = ({ item }) => {
                 height={{ md: 40 }}
                 m={4}
                 src={pictureUrl2}
-                onClick={() => handleSizeClick(pictureUrl2)}
+                onClick={() => handleImageClick(pictureUrl2)}
               />
             </Skeleton>
             <Skeleton isLoaded={!loading}>
@@ -111,7 +110,7 @@ const ItemDetail = ({ item }) => {
                 height={{ md: 40 }}
                 m={4}
                 src={pictureUrl3}
-                onClick={() => handleSizeClick(pictureUrl3)}
+                onClick={() => handleImageClick(pictureUrl3)}
               />
             </Skeleton>
           </Stack>

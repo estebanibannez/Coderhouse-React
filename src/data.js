@@ -228,5 +228,5 @@ export const getProductsBycategoryId = async (categoryId) => {
 
 export const getItem = async (id) => {
   const querySnapshot = await getDoc(doc(db, 'products', id));
-  return querySnapshot.data();
+  return { id, ...querySnapshot.data() };
 };

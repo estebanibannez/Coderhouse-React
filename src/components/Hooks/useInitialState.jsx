@@ -73,7 +73,7 @@ const useInitialState = () => {
   };
 
   const evaluateStock = (stock, qty) => {
-    if (qty > stock) {
+    if (qty > parseInt(stock)) {
       toastIdRef.current = toast({
         title: 'Sin Stock',
         description: 'No tenemos Stock suficiente para esa cantidad',
