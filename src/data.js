@@ -188,11 +188,15 @@ import { db } from './components/Firebase/firebaseConfig';
 // });
 
 export const getProducts = async () => {
-  const snapshot = await getDocs(collection(db, 'products'));
+  try {
+    const snapshot = await getDocs(collection(db, 'products'));
 
-  return snapshot.docs.map((doc) => {
-    return { id: doc.id, ...doc.data() };
-  });
+    return snapshot.docs.map((doc) => {
+      return { id: doc.id, ...doc.data() };
+    });
+  } catch (error) {
+    console.log('Ocurrió un error', error);
+  }
 };
 
 // ========= hardcoded
@@ -207,13 +211,17 @@ export const getProducts = async () => {
 // };
 
 export const getProductsBycategoryId = async (categoryId) => {
-  const q = query(collection(db, 'products'), where('categoryId', '==', categoryId));
+  try {
+    const q = query(collection(db, 'products'), where('categoryId', '==', categoryId));
 
-  const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(q);
 
-  return querySnapshot.docs.map((doc) => {
-    return { id: doc.id, ...doc.data() };
-  });
+    return querySnapshot.docs.map((doc) => {
+      return { id: doc.id, ...doc.data() };
+    });
+  } catch (error) {
+    console.log('Ocurrió un error', error);
+  }
 };
 
 // ========= hardcoded
@@ -227,6 +235,11 @@ export const getProductsBycategoryId = async (categoryId) => {
 // };
 
 export const getItem = async (id) => {
-  const querySnapshot = await getDoc(doc(db, 'products', id));
-  return { id, ...querySnapshot.data() };
+  try {
+    const querySnapshot = await getDoc(doc(db, 'products', id));
+    return { id, ...querySnapshot.data() };
+  } catch (error) {
+    console.log('Ocurrió un error', error);
+  }
+ 
 };
