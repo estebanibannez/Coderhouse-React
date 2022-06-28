@@ -105,7 +105,7 @@ export const Buyer = () => {
                 id="email"
                 name="email"
                 type="email"
-                variant="filled"
+                variant="outline"
                 value={values.email}
                 onBlur={(e) => onChangeInput(e)}
                 onFocus={(e) => onChangeInput(e)}
@@ -120,7 +120,7 @@ export const Buyer = () => {
                 id="name"
                 name="name"
                 type="text"
-                variant="filled"
+                variant="outline"
                 value={values.name}
                 onBlur={(e) => onChangeInput(e)}
                 onFocus={(e) => onChangeInput(e)}
@@ -136,7 +136,7 @@ export const Buyer = () => {
                 id="phone"
                 name="phone"
                 type="text"
-                variant="filled"
+                variant="outline"
                 value={values.phone}
                 onBlur={(e) => onChangeInput(e)}
                 onFocus={(e) => onChangeInput(e)}
@@ -146,7 +146,7 @@ export const Buyer = () => {
             </FormControl>
 
             <Button
-              color="pink.500"
+              color="white"
               variant="solid"
               size="lg"
               fontSize="md"
