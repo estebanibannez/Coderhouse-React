@@ -10,9 +10,6 @@ const useInitialState = () => {
   const [state, setState] = useState(initialState);
   const toast = useToast();
   const toastIdRef = useRef();
-  // const isInCart = (id) => {
-  //   return state.cart.some((product) => product.id === id);
-  // };
 
   //agregar productos
   const addToCart = (payload, qty) => {
@@ -41,7 +38,6 @@ const useInitialState = () => {
 
   //elimina un producto
   const removeFromCart = (payload) => {
-    debugger;
     const newArray = state.cart.filter((product) => product.id !== payload.id);
     setState({
       ...state,
@@ -72,6 +68,7 @@ const useInitialState = () => {
     return formatter.format(value);
   };
 
+  //validate stock products
   const evaluateStock = (stock, qty) => {
     if (qty > parseInt(stock)) {
       toastIdRef.current = toast({
@@ -108,13 +105,13 @@ const useInitialState = () => {
 
   return {
     state,
+    setState,
     addToCart,
     removeFromCart,
     formatPrice,
     emptyCart,
     getItemQty,
     evaluateStock,
-    // isInCart,
   };
 };
 

@@ -66,8 +66,8 @@ export const Cart = () => {
                   </Text>
                   <Link to={'/productos'} display={'flex'}>
                     <Button
-                      colorScheme="teal"
-                      bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
+                      colorScheme="purple.500"
+                      bgGradient="linear(to-r, purple.400, purple.500, purple.600)"
                       color="white"
                       variant="solid"
                     >
@@ -96,7 +96,7 @@ export const Cart = () => {
                 <Flex direction="column" align="center" flex="1">
                   <CartOrderSummary />
 
-                  <HStack mt="6" fontWeight="semibold">
+                  <HStack mt="2" fontWeight="semibold">
                     <p>o</p>
                     <Link to={'/productos'} display={'flex'}>
                       <Button color={secondaryTextColor}>Continuar comprando</Button>

@@ -1,16 +1,8 @@
-import {
-  Button,
-  Divider,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-  useColorModeValue as mode,
-} from '@chakra-ui/react';
-import * as React from 'react';
-import { FaArrowRight } from 'react-icons/fa';
+import { Divider, Flex, Heading, Stack, Text, useColorModeValue as mode } from '@chakra-ui/react';
+
 import { useContext } from 'react';
 import CartContext from '../Context/CartContext';
+import { Buyer } from '../Buyer/Buyer';
 
 const OrderSummaryItem = ({ item }) => {
   const { formatPrice } = useContext(CartContext);
@@ -57,9 +49,10 @@ export const CartOrderSummary = () => {
           </Text>
         </Flex>
       </Stack>
-      <Button color="pink.500" variant="solid" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
-        Ir a Pagar
-      </Button>
+
+      <Stack>
+        <Buyer />
+      </Stack>
     </Stack>
   );
 };

@@ -1,4 +1,4 @@
-import { collection, getDoc, doc, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDoc, doc, getDocs, query, where, addDoc } from 'firebase/firestore';
 import { db } from './components/Firebase/firebaseConfig';
 // const products = [
 //   {
@@ -239,7 +239,27 @@ export const getItem = async (id) => {
     const querySnapshot = await getDoc(doc(db, 'products', id));
     return { id, ...querySnapshot.data() };
   } catch (error) {
-    console.log('Ocurrió un error', error);
+    console.log('Ocurrió un error en getItem', error);
   }
- 
+};
+
+export const setOrder = async (state) => {
+  try {
+    const docRef = await addDoc(collection(db, 'orders'), state);
+    console.log('Orders Created with ID: ', docRef.id);
+    return docRef;
+  } catch (error) {
+    console.log('Ocurrió un error en setOrder', error);
+  }
+};
+
+
+export const setMessageContact = async (state) => {
+  try {
+    const docRef = await addDoc(collection(db, 'contact'), state);
+    console.log('Orders Created with ID: ', docRef.id);
+    return docRef;
+  } catch (error) {
+    console.log('Ocurrió un error en setOrder', error);
+  }
 };
