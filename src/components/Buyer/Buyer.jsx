@@ -68,8 +68,8 @@ export const Buyer = () => {
 
       if (ordersResponse.id !== '' || ordersResponse.id !== undefined) {
         toastIdRef.current = toast({
-          title: `Tu Orden con N°${ordersResponse.id}`,
-          description: 'Fue creada éxitosamente. ',
+          title: `Tu Orden con N°${ordersResponse.id} fue creada éxitosamente.`,
+          description: 'Pronto nos pondremos en contacto contigo ',
           status: 'info',
           position: 'top-center',
           duration: 4000,
