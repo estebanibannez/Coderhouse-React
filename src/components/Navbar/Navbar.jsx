@@ -264,9 +264,9 @@ const NAV_ITEMS = [
         href: '/categoria/patos',
       },
       {
-        label: 'Diaromas',
+        label: 'Dioramas',
         subLabel: '',
-        href: '/categoria/diaromas',
+        href: '/categoria/dioramas',
       },
       // {
       //   label: 'Otros',

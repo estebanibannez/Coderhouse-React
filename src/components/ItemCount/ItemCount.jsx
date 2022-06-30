@@ -13,7 +13,7 @@ import {
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsPinAngle } from 'react-icons/bs';
 
-const ItemCount = ({ stock, initial, onAdd, cant, setCant }) => {
+const ItemCount = ({ stock, onAdd, cant, setCant }) => {
   const handleOnChange = (e) => {
     setCant(parseInt(e.target.value, 10));
   };

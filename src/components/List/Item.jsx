@@ -4,7 +4,7 @@ import { BsFillArrowDownRightSquareFill } from 'react-icons/bs';
 import CartContext from './../Context/CartContext';
 import { useContext } from 'react';
 
-const Item = ({ item, onAdd }) => {
+const Item = ({ item }) => {
   const { id, title, price, previusPrice, description, pictureUrl } = item;
   const { formatPrice } = useContext(CartContext);
 

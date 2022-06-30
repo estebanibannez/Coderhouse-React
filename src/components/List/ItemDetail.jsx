@@ -29,7 +29,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import CartContext from '../Context/CartContext';
 
 const ItemDetail = ({ item, loading }) => {
-  const [cant, setCant] = useState(0);
+  const [cant, setCant] = useState(1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [image, setImage] = useState('');
 
@@ -164,7 +164,7 @@ const ItemDetail = ({ item, loading }) => {
                       cant={cant}
                       setCant={setCant}
                     />
-                    {/* )} */}
+             
                     <Stack direction="row" mt={2}>
                       <Button
                         rightIcon={<FiCheck />}

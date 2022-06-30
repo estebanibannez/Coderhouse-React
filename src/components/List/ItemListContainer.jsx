@@ -1,18 +1,24 @@
-import { SimpleGrid, Box, Flex, Container } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import {
+  SimpleGrid,
+  Box,
+  Flex,
+  Container,
+  InputGroup,
+  InputLeftElement,
+  Input,
+} from '@chakra-ui/react';
+import { useEffect, useState, useMemo } from 'react';
+import { BiSearch } from 'react-icons/bi';
 import ItemList from './ItemList';
 import { getProducts, getProductsBycategoryId } from '../../data';
 import { useParams } from 'react-router-dom';
-import { Skeleton } from '@chakra-ui/react';
+import { Skeleton, Text, useColorModeValue, Heading } from '@chakra-ui/react';
 
 export default function ItemListContainer() {
   const { id } = useParams();
-
   const [useData, setData] = useState([]);
+  const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
-  const onAdd = () => {
-    console.log('padre');
-  };
 
   useEffect(() => {
     if (!id) {
@@ -22,34 +28,61 @@ export default function ItemListContainer() {
         setData(data);
         setLoading(false);
       })();
-
-      // getProducts.then((response) => {
-      //   setData(response);
-      //   setLoading(false);
-      // });
     } else {
       //se ejecuta solo si no tiene una categoria seleccionada
       (async () => {
         const data = await getProductsBycategoryId(id);
-        debugger;
+
         setData(data);
         setLoading(false);
       })();
-
-      // getProductsBycategoryId(id).then((response) => {
-      //   setData(response);
-      //   setLoading(false);
-      // });
     }
   }, [id]);
+
+  const results = !search
+    ? useData
+    : useData.filter(
+        (data) =>
+          data.title.toString().toLowerCase().includes(search.toLowerCase()) ||
+          data.description.toString().toLowerCase().includes(search.toLowerCase())
+      );
+
+  const handleSearcher = (event) => {
+    setSearch(event.target.value);
+  };
 
   return (
     <>
       <Container maxW={'container.xl'} pt={2}>
-        <SimpleGrid columns={[1, 2, 3, 4]}>
-          <ItemList items={useData} onAdd={onAdd} />
+        <InputGroup display="block" margin={{ lg: '0 auto' }} w={{ lg: '50vw' }}>
+          <InputLeftElement pointerEvents="none" id="searchIcon">
+            <BiSearch />
+          </InputLeftElement>
+          <Input
+            data-test-id="search-input"
+            pl={10}
+            variant="filled"
+            placeholder="¿Qué producto buscas?"
+            value={search}
+            onChange={handleSearcher}
+          />
+        </InputGroup>
+        <SimpleGrid columns={[1, 2, 3, 4]} mt={4}>
+          <ItemList items={results} />
         </SimpleGrid>
-
+        {!results.length && (
+          <Flex align={'center'} justify={'center'} mt={4}>
+            <Heading
+              as={'h2'}
+              fontSize={{ base: 'xl', sm: '2xl' }}
+              textAlign={'center'}
+              mb={5}
+              color={'gray'}
+            >
+              Lo sentimos no encontramos resultados para tu busqueda! 😢
+            </Heading>
+          </Flex>
+        )}
         {loading && (
           <SimpleGrid columns={[1, 2, 3, 4]}>
             {Array(10)
