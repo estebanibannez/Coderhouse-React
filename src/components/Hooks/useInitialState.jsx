@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useToast } from '@chakra-ui/react';
 
 const initialState = {
@@ -7,9 +7,15 @@ const initialState = {
 };
 
 const useInitialState = () => {
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState(
+    JSON.parse(localStorage.getItem('cartStorage')) || initialState
+  );
   const toast = useToast();
   const toastIdRef = useRef();
+
+  useEffect(() => {
+    setLocalStorages();
+  }, [state]);
 
   //agregar productos
   const addToCart = (payload, qty) => {
@@ -27,10 +33,10 @@ const useInitialState = () => {
     } else {
       const product = state.cart.findIndex((c) => c.id === payload.id);
 
-      if (evaluateStock(state.cart[product].stock, state.cart[product].quantity + qty)) {
+      if (evaluateStock(state.cart[product].stock, state.cart[product].quantity, qty)) {
         const newState = { ...state };
         newState.cart[product].quantity += qty;
-        newState.total += payload.price;
+        newState.total += payload.price * qty;
         setState(newState);
       }
     }
@@ -49,6 +55,7 @@ const useInitialState = () => {
   //vaciar el carro
   const emptyCart = (id) => {
     setState(initialState);
+    localStorage.removeItem('cartStorage');
   };
 
   //obtener cantidad de items del carro
@@ -69,7 +76,7 @@ const useInitialState = () => {
   };
 
   //validate stock products
-  const evaluateStock = (stock, qty) => {
+  const evaluateStock = (stock, qty, qtybox) => {
     if (qty > parseInt(stock)) {
       toastIdRef.current = toast({
         title: 'Sin Stock',
@@ -80,7 +87,7 @@ const useInitialState = () => {
         isClosable: true,
       });
       return false;
-    } else if (qty <= 0) {
+    } else if (qtybox <= 0) {
       toastIdRef.current = toast({
         title: 'Seleccione una cantidad',
         description: 'Es necesario seleccionar una cantidad para agregar al carro',
@@ -103,6 +110,15 @@ const useInitialState = () => {
     }
   };
 
+  const setLocalStorages = () => {
+    try {
+      localStorage.removeItem('cartStorage');
+      localStorage.setItem('cartStorage', JSON.stringify(state));
+    } catch (error) {
+      console.error('Ocurrió un error', error);
+    }
+  };
+
   return {
     state,
     setState,
@@ -112,6 +128,7 @@ const useInitialState = () => {
     emptyCart,
     getItemQty,
     evaluateStock,
+    setLocalStorages,
   };
 };
 

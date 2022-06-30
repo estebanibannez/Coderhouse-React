@@ -28,16 +28,20 @@ Proyecto frontend basado en react realizado en la Comisión 31205 de coderhouse,
 - Chakra ui
 - React router dom
 - Firebase
+- Formik
 
-## Installation ⚙️
+## Installation dependencies⚙️
 
 `$ yarn`
 
-## Despliegue 📦
+## Exec App local 🖥️
 `$ yarn dev`
 
-
+## Desploy vercel 📦
 👉 Link [Production](https://reypato.vercel.app "Production") 👈
+
+
+.- Esteban Ibanez
 
 
 

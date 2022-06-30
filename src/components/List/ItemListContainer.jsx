@@ -7,12 +7,12 @@ import {
   InputLeftElement,
   Input,
 } from '@chakra-ui/react';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import ItemList from './ItemList';
 import { getProducts, getProductsBycategoryId } from '../../data';
 import { useParams } from 'react-router-dom';
-import { Skeleton, Text, useColorModeValue, Heading } from '@chakra-ui/react';
+import { Skeleton, Heading } from '@chakra-ui/react';
 
 export default function ItemListContainer() {
   const { id } = useParams();
@@ -70,7 +70,7 @@ export default function ItemListContainer() {
         <SimpleGrid columns={[1, 2, 3, 4]} mt={4}>
           <ItemList items={results} />
         </SimpleGrid>
-        {!results.length && (
+        {!loading && !results.length && (
           <Flex align={'center'} justify={'center'} mt={4}>
             <Heading
               as={'h2'}
@@ -83,6 +83,7 @@ export default function ItemListContainer() {
             </Heading>
           </Flex>
         )}
+
         {loading && (
           <SimpleGrid columns={[1, 2, 3, 4]}>
             {Array(10)

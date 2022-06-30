@@ -164,7 +164,7 @@ const ItemDetail = ({ item, loading }) => {
                       cant={cant}
                       setCant={setCant}
                     />
-             
+
                     <Stack direction="row" mt={2}>
                       <Button
                         rightIcon={<FiCheck />}

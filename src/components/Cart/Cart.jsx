@@ -18,11 +18,7 @@ import { CartOrderSummary } from '../Cart/CartOrderSumary';
 export const Cart = () => {
   const secondaryTextColor = useColorModeValue('gray.600', 'gray.400');
 
-  const {
-    state: { cart },
-    emptyCart,
-    getItemQty,
-  } = useContext(CartContext);
+  const { state, emptyCart, getItemQty } = useContext(CartContext);
 
   return (
     <Box
@@ -38,7 +34,7 @@ export const Cart = () => {
       >
         <Stack spacing={{ base: '8', md: '10' }} flex="2">
           <Stack spacing="6">
-            {cart.length === 0 ? (
+            {state.cart.length === 0 ? (
               <>
                 <Box textAlign="center" py={10} px={6}>
                   <Heading
@@ -52,7 +48,6 @@ export const Cart = () => {
                       rounded={'lg'}
                       boxSize="sm"
                       objectFit="cover"
-                      // w="full"
                       h="auto"
                       src={window.location.origin + '/cart-empty.png'}
                     />
@@ -82,7 +77,7 @@ export const Cart = () => {
                   Carrito ({getItemQty()} items)
                 </Heading>
 
-                {cart.map((item, i) => (
+                {state.cart.map((item, i) => (
                   <CartItem key={item.id} {...item} indexValue={i} />
                 ))}
                 <Flex direction="column" align="flex-end" flex="1">
