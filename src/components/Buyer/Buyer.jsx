@@ -32,13 +32,15 @@ export const Buyer = () => {
     if (!values.email) {
       errors.email = `El email es requerido`;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = 'La dirección de correo es inválida';
+      errors.email = 'El email que indicas no es válido';
     }
 
     if (!values.name) {
       errors.name = `El nombre es requerido`;
     } else if (values.name.length < 2) {
-      errors.name = 'La nombre debe contener al menos 2 caracteres';
+      errors.name = 'El nombre debe contener al menos 2 caracteres';
+    } else if (values.name.length > 15) {
+      errors.name = 'El nombre supera los caracteres permitidos';
     }
 
     if (!values.phone) {
@@ -46,7 +48,7 @@ export const Buyer = () => {
     } else if (values.phone.length < 8) {
       errors.phone = 'El teléfono debe contener al menos 8 caracteres';
     } else if (values.phone.length > 15) {
-      errors.phone = 'El teléfono excede los caracteres';
+      errors.phone = 'El teléfono excede los caracteres permitidos';
     }
     return errors;
   };
@@ -68,8 +70,8 @@ export const Buyer = () => {
 
       if (ordersResponse.id !== '' || ordersResponse.id !== undefined) {
         toastIdRef.current = toast({
-          title: `Tu Orden con N°${ordersResponse.id} fue creada éxitosamente.`,
-          description: 'Pronto nos pondremos en contacto contigo ',
+          title: `Tu Orden con N°${ordersResponse.id} fue creada éxitosamente 🙌🎉 !`,
+          description: 'Pronto nos pondremos en contacto contigo🤪!',
           status: 'info',
           position: 'top-center',
           duration: 4000,
@@ -80,8 +82,8 @@ export const Buyer = () => {
         navigate('/');
       } else {
         toastIdRef.current = toast({
-          title: `Error`,
-          description: `Ocurrió un error al crear la orden ${ordersResponse}`,
+          title: `Ocurrió un error al crear la orden ${ordersResponse} 😥`,
+          description: `Estamos trabajando para resolverlo cuanto antes 🤖`,
           status: 'error',
           position: 'top-center',
           duration: 2000,

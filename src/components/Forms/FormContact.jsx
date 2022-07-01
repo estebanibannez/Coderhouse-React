@@ -28,7 +28,6 @@ const FormContact = () => {
   const handleSubmit = async (values) => {
     try {
       // alert(JSON.stringify(values, null, 2));
-      debugger;
 
       const contactMessage = await setMessageContact(values);
 
@@ -36,7 +35,7 @@ const FormContact = () => {
 
       if (contactMessage.id !== '' || contactMessage.id !== undefined) {
         toastIdRef.current = toast({
-          title: `WOOOOHOOO!`,
+          title: `WOOOOHOOO 🙌🎉!`,
           description: 'Tu mensaje se envió éxitosamente',
           status: 'info',
           position: 'top-center',
@@ -46,8 +45,8 @@ const FormContact = () => {
         navigate('/');
       } else {
         toastIdRef.current = toast({
-          title: `Error `,
-          description: `Ocurrió un error al enviar tu mensaje!`,
+          title: `Ocurrió un error al crear la orden 😥`,
+          description: `Estamos trabajando para resolverlo cuanto antes 🤖`,
           status: 'error',
           position: 'top-center',
           duration: 2000,
