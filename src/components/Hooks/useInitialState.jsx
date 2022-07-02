@@ -19,9 +19,10 @@ const useInitialState = () => {
 
   //agregar productos
   const addToCart = (payload, qty) => {
+    debugger;
     const exist = state.cart.some((element) => element.id === payload.id);
     if (!exist) {
-      if (evaluateStock(payload.stock, qty)) {
+      if (evaluateStock(payload.stock, 0, qty)) {
         const newItem = { ...payload, quantity: qty };
 
         setState({
@@ -76,8 +77,9 @@ const useInitialState = () => {
   };
 
   //validate stock products
-  const evaluateStock = (stock, qty, qtybox) => {
-    if (qty > parseInt(stock)) {
+  const evaluateStock = (stock, qtyInCart, qtyInBox) => {
+    debugger;
+    if (qtyInCart + qtyInBox > parseInt(stock)) {
       toastIdRef.current = toast({
         title: 'Sin Stock',
         description: 'No tenemos Stock suficiente para esa cantidad',
@@ -87,7 +89,7 @@ const useInitialState = () => {
         isClosable: true,
       });
       return false;
-    } else if (qtybox <= 0) {
+    } else if (qtyInBox <= 0) {
       toastIdRef.current = toast({
         title: 'Seleccione una cantidad',
         description: 'Es necesario seleccionar una cantidad para agregar al carro',
