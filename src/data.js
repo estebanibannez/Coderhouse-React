@@ -253,7 +253,6 @@ export const setOrder = async (state) => {
   }
 };
 
-
 export const setMessageContact = async (state) => {
   try {
     const docRef = await addDoc(collection(db, 'contact'), state);

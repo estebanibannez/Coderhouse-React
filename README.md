@@ -1,4 +1,3 @@
-
 <div align="center">
     <a href="https://es.reactjs.org" target="_blank">
         <img
@@ -11,37 +10,39 @@
 </div>
 
 # Curso React Coderhouse
+
 ## Proyecto Ecommerce rey pato
 
-## Table of Contents 🚀
+## Tabla de Contenido 🚀
 
 Contenido.
 
 - [Installation](#installation)
 - [Deploy](#Despliegue)
-## About
+
+## Acerca de
 
 Proyecto frontend basado en react realizado en la Comisión 31205 de coderhouse, cuya finalidad fue realizar un ecommerce funcional con carro de compra conectado a firebase.
 
 ## Libs and Frameworks
 
+- React
+- Context api
 - Chakra ui
 - React router dom
 - Firebase
-- Formik
+- Formik con Yup
 
 ## Installation dependencies⚙️
 
 `$ yarn`
 
 ## Exec App local 🖥️
+
 `$ yarn dev`
 
 ## Desploy vercel 📦
-👉 Link [Production](https://reypato.vercel.app "Production") 👈
 
+👉 Link [Production](https://reypato.vercel.app 'Production') 👈
 
 .- Esteban Ibanez
-
-
-
