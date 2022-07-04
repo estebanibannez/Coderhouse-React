@@ -64,6 +64,7 @@ export default function ItemListContainer() {
             variant="filled"
             placeholder="¿Qué producto buscas?"
             value={search}
+            color="white"
             onChange={handleSearcher}
           />
         </InputGroup>
