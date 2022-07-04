@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Flex, Box, Image, Badge, useColorModeValue, Text, Icon } from '@chakra-ui/react';
-import { BsFillArrowDownRightSquareFill } from 'react-icons/bs';
+import { Box, Image, Badge, useColorModeValue, Text, Icon } from '@chakra-ui/react';
+import { BsEyeFill } from 'react-icons/bs';
 import CartContext from './../Context/CartContext';
 import { useContext } from 'react';
 
@@ -10,71 +10,73 @@ const Item = ({ item }) => {
 
   return (
     <Box
-      bg={useColorModeValue('white', 'gray.800')}
+      display={{ md: 'flex' }}
+      bg={useColorModeValue('white', 'gray.200')}
       m={2}
       borderWidth="1px"
       rounded="lg"
       shadow="lg"
-      position="relative"
     >
-      <Link to={'/item/' + id} display={'flex'}>
-        <Image
-          src={pictureUrl}
-          alt={`Picture of ${pictureUrl}`}
-          minWidth={'100%'}
-          objectFit="cover"
-          boxSize="400px"
-          position="relative"
-          roundedTop="lg"
-        />{' '}
-      </Link>
+      {/* <Box flexShrink={0}></Box> */}
+      <Box mt={{ base: 0, md: 0 }} ml={{ md: 0 }}>
+        <Link to={'/item/' + id} display={'flex'}>
+          <Image
+            src={pictureUrl}
+            alt={`Picture of ${pictureUrl}`}
+            minWidth={'100%'}
+            objectFit="cover"
+            boxSize="auto"
+            // width={{ md: 60 }}
+            position="relative"
+            borderRadius="lg"
+          />
+        </Link>
+        <Badge
+          rounded="full"
+          px="2"
+          ml={4}
+          borderRadius="full"
+          fontSize={{ base: 'sm' }}
+          colorScheme="purple"
+        >
+          Oferta
+        </Badge>
 
-      <Box p="6">
-        <Box d="flex" alignItems="baseline">
-          <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
-            Oferta
-          </Badge>
-        </Box>
-        <Flex mt="1" justifyContent="space-between" alignContent="center">
-          <Box fontSize="2xl" fontWeight="semibold" as="h4" lineHeight="tight">
+        <Box m={{ base: 4, md: 4 }}>
+          <Text
+            fontWeight="bold"
+            textTransform="uppercase"
+            fontSize={{ base: 'sm', md: 'sm', xl: 'xl' }}
+            letterSpacing="wider"
+            color="gray.900"
+          >
             {title}
-          </Box>
-        </Flex>
-        <Flex mt="1" justifyContent="space-between" alignContent="center">
-          <Box fontSize="sm" fontWeight="normal" lineHeight="tight">
+          </Text>
+
+          <Text as="s" color={'gray.600'} fontSize={{ base: 'sm', md: 'sm', xl: 'md' }}>
+            {formatPrice(previusPrice)}
+          </Text>
+          <Text color={'pink.500'} fontWeight={'bold'} fontSize={{ base: 'xl', xl: '2xl' }}>
+            {formatPrice(price)}
+          </Text>
+          <Text
+            mt={1}
+            display="block"
+            fontSize={{ base: 'sm', md: 'sm', xl: 'md' }}
+            lineHeight="normal"
+            fontWeight="normal"
+            letterSpacing="wider"
+          >
             {description}
-          </Box>
-        </Flex>
+          </Text>
 
-        <Flex justifyContent="space-between" alignContent="center">
-          {/* <Rating rating={data.rating} numReviews={data.numReviews} /> */}
-
-          <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
-            <Box as="span" color={'gray.600'} fontSize="sm" m={2}>
-              <Text as="s"> {formatPrice(previusPrice)}</Text>
-            </Box>
-
-            <Box as="span" color={'pink.500'} fontSize="3xl" fontWeight={'bold'}>
-              {formatPrice(price)}
-            </Box>
-
-            <Box d="flex" alignItems="center">
-              <Box as="span" ml="4" color="gray.600" fontSize="sm">
-                <Link to={'/item/' + id} display={'flex'}>
-                  Ver detalle del Producto
-                  <Icon
-                    as={BsFillArrowDownRightSquareFill}
-                    h={3}
-                    w={3}
-                    ml={2}
-                    alignSelf={'center'}
-                    color="pink.500"
-                  />
-                </Link>
-              </Box>
-            </Box>
-          </Box>
-        </Flex>
+          <Link to={'/item/' + id} fontSize={{ base: 'sm', md: 'sm' }} color="gray.500">
+            <Text textAlign={['center', 'bottom']} letterSpacing="wide" mt={4} fontWeight="light">
+              Detalle del Producto
+              <Icon as={BsEyeFill} h={3} w={3} ml={2} alignSelf={'bottom'} color="pink.500" />
+            </Text>
+          </Link>
+        </Box>
       </Box>
     </Box>
   );

@@ -19,7 +19,6 @@ const useInitialState = () => {
 
   //agregar productos
   const addToCart = (payload, qty) => {
-    debugger;
     const exist = state.cart.some((element) => element.id === payload.id);
     if (!exist) {
       if (evaluateStock(payload.stock, 0, qty)) {
@@ -78,7 +77,6 @@ const useInitialState = () => {
 
   //validate stock products
   const evaluateStock = (stock, qtyInCart, qtyInBox) => {
-    debugger;
     if (qtyInCart + qtyInBox > parseInt(stock)) {
       toastIdRef.current = toast({
         title: 'Sin Stock',

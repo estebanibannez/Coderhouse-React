@@ -71,7 +71,7 @@ export default function ItemListContainer() {
             onChange={handleSearcher}
           />
         </InputGroup>
-        <SimpleGrid columns={[1, 2, 3, 4]} mt={4}>
+        <SimpleGrid columns={[2, 2, 3, 4]} mt={4}>
           <ItemList items={results} />
         </SimpleGrid>
         {!loading && !results.length && (
@@ -89,7 +89,7 @@ export default function ItemListContainer() {
         )}
 
         {loading && (
-          <SimpleGrid columns={[1, 2, 3, 4]}>
+          <SimpleGrid columns={[2, 2, 3, 4]}>
             {Array(10)
               .fill('')
               .map((_, i) => {
