@@ -54,7 +54,7 @@ export default function ItemListContainer() {
   return (
     <>
       <Container maxW={'container.xl'} pt={2}>
-        <InputGroup display="block" margin={{ lg: '0 auto' }} w={{ lg: '50vw' }}>
+        <InputGroup display="block" margin={{ lg: '0 auto' }} w={{ lg: '50vw' }} m={2}>
           <InputLeftElement pointerEvents="none" id="searchIcon">
             <BiSearch />
           </InputLeftElement>
@@ -64,8 +64,9 @@ export default function ItemListContainer() {
             variant="filled"
             placeholder="¿Qué producto buscas?"
             value={search}
-            fontWeight='medium'
-            color='gray.300'
+            fontWeight="medium"
+            color="gray.300"
+            focusBorderColor="gray.500"
             _placeholder={{ opacity: 1, color: 'gray.600' }}
             onChange={handleSearcher}
           />
