@@ -64,22 +64,22 @@ const ItemDetail = ({ item, loading }) => {
         <Box
           p={2}
           display={{ md: 'flex' }}
-          bg={useColorModeValue('white', 'gray.800')}
-          borderWidth="1px"
+          bg={useColorModeValue('gray.900', 'gray.50')}
+          color={useColorModeValue('white', 'gray.900')}
+          // borderWidth="0.1em"
           rounded="lg"
           shadow="lg"
           maxW="100%"
           position="relative"
         >
-          <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}></Box>
           <Stack direction={{ base: 'row', md: 'column' }}>
             <Skeleton isLoaded={!loading}>
               <Image
                 rounded="lg"
                 boxSize="sm"
                 width={{ md: 40, base: 20 }}
-                height={{ md: 40 }}
-                m={4}
+                height={{ md: 40, base: 20 }}
+                m={2}
                 src={pictureUrl1}
                 onClick={() => handleImageClick(pictureUrl1)}
               />
@@ -89,8 +89,8 @@ const ItemDetail = ({ item, loading }) => {
                 rounded="lg"
                 boxSize="sm"
                 width={{ md: 40, base: 20 }}
-                height={{ md: 40 }}
-                m={4}
+                height={{ md: 40, base: 20 }}
+                m={2}
                 src={pictureUrl2}
                 onClick={() => handleImageClick(pictureUrl2)}
               />
@@ -100,8 +100,8 @@ const ItemDetail = ({ item, loading }) => {
                 rounded="lg"
                 boxSize="sm"
                 width={{ md: 40, base: 20 }}
-                height={{ md: 40 }}
-                m={4}
+                height={{ md: 40, base: 20 }}
+                m={2}
                 src={pictureUrl3}
                 onClick={() => handleImageClick(pictureUrl3)}
               />
@@ -113,8 +113,8 @@ const ItemDetail = ({ item, loading }) => {
               <Image
                 rounded="lg"
                 boxSize="sm"
-                width={{ md: 80, base: 80 }}
-                height={{ md: 80 }}
+                width={{ md: 'md', base: 'md' }}
+                height={{ md: 'md' }}
                 src={pictureUrl}
               />
             </Skeleton>
